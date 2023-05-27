@@ -1,20 +1,17 @@
-import Dropdown from 'react-bootstrap/Dropdown';
 import "../styles/Header.css";
+import { Button } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { toggleSidebar } from "../logics/actions";
 
 export const Header = () => {
+  const dispatch = useDispatch();
 
+  const handleClick = () => {
+    dispatch(toggleSidebar(true));
+  };
   return (
     <div className="Header">
-      <Dropdown>
-        <Dropdown.Toggle variant="success" id="dropdown-basic">
-          Menu
-        </Dropdown.Toggle>
-        <Dropdown.Menu>
-          <Dropdown.Item href="/ListOfPosts">ListOfPosts</Dropdown.Item>
-          <Dropdown.Item href="/DetailsPage">DetailsPage</Dropdown.Item>
-          <Dropdown.Item href="/AboutMe">AboutMe</Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
+      <Button onClick={handleClick} variant="link">Menu</Button>
     </div>
   );
 };

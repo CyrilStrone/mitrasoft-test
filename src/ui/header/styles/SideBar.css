@@ -1,0 +1,23 @@
+.SideBar__close {
+  display: none !important;
+}
+.SideBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100vh;
+  background-color: black;
+  padding: 8px;
+}
+.SideBar a {
+  color: white;
+  text-decoration: none;
+  padding: 3px;
+}
+.SideBar a:hover {
+    color: black;
+    background-color: aliceblue;
+  }

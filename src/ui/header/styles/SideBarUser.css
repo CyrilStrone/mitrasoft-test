@@ -1,0 +1,18 @@
+.SideBarUser {
+    display: flex;
+    gap: 4px;
+    width: 100%;
+    padding: 3px;
+    color: aliceblue;
+    align-items: center;
+}
+.SideBarUser__Avatar {
+    width: 40px;
+    height: 40px;
+    background-color: aliceblue;
+    border-radius: 100%;
+}
+.SideBarUser__Name {
+}
+.SideBarUser__Mail {
+}
