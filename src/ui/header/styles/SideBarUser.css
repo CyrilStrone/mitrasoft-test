@@ -3,13 +3,13 @@
     gap: 4px;
     width: 100%;
     padding: 3px;
-    color: aliceblue;
+    color: black;
     align-items: center;
 }
 .SideBarUser__Avatar {
     width: 40px;
     height: 40px;
-    background-color: aliceblue;
+    background-color: black;
     border-radius: 100%;
 }
 .SideBarUser__Name {
