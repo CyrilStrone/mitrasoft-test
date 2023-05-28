@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 export interface IListOfPostsBarItem {
   id: any
+  userId?:any
 }
 export const ListOfPostsBarItem = (params: IListOfPostsBarItem) => {
   const dispatch = useDispatch();
@@ -19,10 +20,11 @@ export const ListOfPostsBarItem = (params: IListOfPostsBarItem) => {
       dispatch(openComments(params.id));
     }
   };
+  console.log(params.userId)
   return (
     <Card className="ListOfPostsBarItem">
       <Card className="ListOfPostsBarItem__User">
-        <Card.Img src={Avatar} />
+        {params.userId == null && <Card.Img src={Avatar} />}
         <Card.Body>
           <Card.Title>Card Title</Card.Title>
           <Card.Text>

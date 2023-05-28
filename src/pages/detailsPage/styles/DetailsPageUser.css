@@ -1,5 +1,6 @@
 .DetailsPageUser{
     max-width: 500px;
+    padding: 10px;
 }
 .DetailsPageUser__User{
     border: none;

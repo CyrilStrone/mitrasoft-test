@@ -8,8 +8,8 @@ export const ListOfPostsBar = (params:IListOfPostsBar) => {
 
   return (
     <div className="ListOfPostsBar">
-      <ListOfPostsBarItem id={0}/>
-      <ListOfPostsBarItem id={1}/>
+      <ListOfPostsBarItem id={0} userId={params.id}/>
+      <ListOfPostsBarItem id={1} userId={params.id}/>
     </div>
   );
 };
