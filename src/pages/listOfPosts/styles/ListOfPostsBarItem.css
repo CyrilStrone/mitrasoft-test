@@ -1,0 +1,9 @@
+.ListOfPostsBarItem {
+  display: flex;
+  flex-direction: row;
+  max-width: 500px;
+}
+.ListOfPostsBarItem img {
+  width: 100px;
+  object-fit: cover;
+}
