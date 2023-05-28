@@ -1,5 +1,5 @@
 import "../styles/SideBar.css";
-import { AppState } from "../logics/reducers";
+import { headerState } from "../logics/reducers";
 import { toggleSidebar } from "../logics/actions";
 import { SideBarUser } from "../molecules/SideBarUser";
 import { NavLink } from "react-router-dom";
@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Offcanvas } from "react-bootstrap";
 
 export const SideBar = () => {
-  const isOpen = useSelector((state: AppState) => state.sidebarOpen);
+  const isOpen = useSelector((state: headerState) => state.sidebarOpen);
   const dispatch = useDispatch();
 
   const handleClose = () => {

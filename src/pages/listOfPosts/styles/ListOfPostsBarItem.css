@@ -1,9 +1,12 @@
 .ListOfPostsBarItem {
+    max-width: 500px;
+}
+.ListOfPostsBarItem__User {
   display: flex;
   flex-direction: row;
-  max-width: 500px;
+  border: none;
 }
-.ListOfPostsBarItem img {
+.ListOfPostsBarItem__User img {
   width: 100px;
   object-fit: cover;
 }

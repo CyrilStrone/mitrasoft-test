@@ -1,15 +1,15 @@
 import { Reducer } from 'redux';
 import { ActionType, ToggleSidebarAction } from './actions';
 
-export interface AppState {
+export interface headerState {
   sidebarOpen: boolean;
 }
 
-const initialState: AppState = {
+const initialState: headerState = {
   sidebarOpen: false,
 };
 
-const headerReducer: Reducer<AppState, ToggleSidebarAction> = (state = initialState, action) => {
+const headerReducer: Reducer<headerState, ToggleSidebarAction> = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.TOGGLE_SIDEBAR:
       return {
