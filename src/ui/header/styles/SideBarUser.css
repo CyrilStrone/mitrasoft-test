@@ -1,18 +1,24 @@
 .SideBarUser {
-    display: flex;
-    gap: 4px;
-    width: 100%;
-    padding: 3px;
-    color: black;
-    align-items: center;
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  padding: 3px;
+  color: black;
+  align-items: center;
 }
 .SideBarUser__Avatar {
-    width: 40px;
-    height: 40px;
-    background-color: black;
-    border-radius: 100%;
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  border-radius: 100%;
+  object-fit: cover;
 }
-.SideBarUser__Name {
+.SideBarUser__UserInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
-.SideBarUser__Mail {
+.SideBarUser__UserInfo__Name {
+}
+.SideBarUser__UserInfo__Mail {
 }
