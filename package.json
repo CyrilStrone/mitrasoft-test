@@ -13,6 +13,7 @@
     "@types/react-redux": "^7.1.25",
     "axios": "^1.4.0",
     "bootstrap": "^5.2.3",
+    "bootstrap-icons": "^1.10.5",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.4",
     "react-dom": "^18.2.0",

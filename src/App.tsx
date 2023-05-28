@@ -1,5 +1,6 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap-icons/font/bootstrap-icons.css";
 import { Route, Routes } from "react-router-dom";
 import { ListOfPosts } from './pages/listOfPosts/organelles/ListOfPosts';
 import { DetailsPage } from './pages/detailsPage/organelles/DetailsPage';
