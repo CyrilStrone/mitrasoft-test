@@ -1,7 +1,10 @@
 import { ListOfPostsBarItem } from "../atoms/ListOfPostsBarItem";
 import "../styles/ListOfPostsBar.css";
 
-export const ListOfPostsBar = () => {
+export interface IListOfPostsBar{
+  id:number | null
+}
+export const ListOfPostsBar = (params:IListOfPostsBar) => {
 
   return (
     <div className="ListOfPostsBar">

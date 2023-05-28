@@ -1,13 +1,12 @@
 import "../styles/DetailsPageUser.css";
 import Avatar from '../../../assets/listOfPosts/avatar.jpg'
 import { Card } from "react-bootstrap";
-import { ListOfPostsBarItemComments } from "../../listOfPosts/atoms/ListOfPostsBarItemComments";
+import { ListOfPosts } from "../../listOfPosts/organelles/ListOfPosts";
 
 export interface IDetailsPageUser {
     id: any
 }
 export const DetailsPageUser = (params: IDetailsPageUser) => {
-
     return (
         <Card className="DetailsPageUser">
             <Card className="DetailsPageUser__User">
@@ -20,7 +19,7 @@ export const DetailsPageUser = (params: IDetailsPageUser) => {
                     </Card.Text>
                 </Card.Body>
             </Card>
-            {params.id && <ListOfPostsBarItemComments id={params.id} />}
+            <ListOfPosts id={0} />
         </Card>
     );
 };

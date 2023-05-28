@@ -20,8 +20,8 @@ function App() {
           <SideBar />
         </Provider>
         <Routes>
-          <Route path="*" element={<ListOfPosts />} />
-          <Route path="/ListOfPosts" element={<ListOfPosts />} />
+          <Route path="*" element={<ListOfPosts id={null}/>} />
+          <Route path="/ListOfPosts" element={<ListOfPosts id={null} />} />
           <Route path="/DetailsPage" element={<DetailsPage />} />
           <Route path="/AboutMe" element={<AboutMe />} />
         </Routes>
