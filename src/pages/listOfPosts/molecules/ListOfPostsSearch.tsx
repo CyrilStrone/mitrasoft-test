@@ -1,5 +1,5 @@
 import { Button, FloatingLabel, Form } from "react-bootstrap";
-import "../styles/ListOfPostsPagination.css";
+import "../styles/ListOfPostsSearch.css";
 
 export const ListOfPostsSearch = () => {
 

@@ -14,11 +14,11 @@ function App() {
   return (
 
     <div className="App">
-      <div className="App_Actual">
         <Provider store={headerStore}>
           <Header />
           <SideBar />
         </Provider>
+      <div className="App_Actual">
         <Routes>
           <Route path="*" element={<ListOfPosts id={null}/>} />
           <Route path="/ListOfPosts" element={<ListOfPosts id={null} />} />

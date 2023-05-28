@@ -1,0 +1,5 @@
+.App{
+}
+.App_Actual{
+    height: calc(100vh - 50px);
+}
