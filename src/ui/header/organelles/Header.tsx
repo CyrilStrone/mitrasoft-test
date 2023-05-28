@@ -13,7 +13,7 @@ export const Header = () => {
   };
   return (
     <div className="Header">
-      <Button onClick={handleClick} variant="link">Menu</Button>
+      <Button onClick={handleClick} variant="primary">Menu</Button>
     </div>
   );
 };

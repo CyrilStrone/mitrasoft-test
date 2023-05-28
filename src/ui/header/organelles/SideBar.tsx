@@ -1,9 +1,9 @@
 import "../styles/SideBar.css";
-import { useDispatch, useSelector } from 'react-redux';
 import { AppState } from "../logics/reducers";
 import { toggleSidebar } from "../logics/actions";
-import { NavLink } from "react-router-dom";
 import { SideBarUser } from "../molecules/SideBarUser";
+import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
 import { Offcanvas } from "react-bootstrap";
 
 export const SideBar = () => {
