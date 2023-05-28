@@ -1,10 +1,10 @@
 import "../styles/SideBar.css";
-import { headerState } from "../logics/reducers";
 import { toggleSidebar } from "../logics/actions";
 import { SideBarUser } from "../molecules/SideBarUser";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { Offcanvas } from "react-bootstrap";
+import { headerState } from "../logics/reducers";
 
 export const SideBar = () => {
   const isOpen = useSelector((state: headerState) => state.sidebarOpen);

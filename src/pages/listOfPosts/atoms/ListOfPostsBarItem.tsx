@@ -2,8 +2,23 @@ import { Button, Card } from "react-bootstrap";
 import "../styles/ListOfPostsBarItem.css";
 import Avatar from '../../../assets/listOfPosts/avatar.jpg'
 import { ListOfPostsBarItemComments } from "./ListOfPostsBarItemComments";
-export const ListOfPostsBarItem = () => {
+import { closeComments, openComments } from "../logics/actions";
+import { commentsState } from "../logics/reducers";
+import { useDispatch, useSelector } from "react-redux";
 
+export interface IListOfPostsBarItem {
+  id: any
+}
+export const ListOfPostsBarItem = (params: IListOfPostsBarItem) => {
+  const dispatch = useDispatch();
+  const openCommentsId = useSelector((state: commentsState) => state.openCommentsId);
+  const handleOpenComments = () => {
+    if (openCommentsId === params.id) {
+      dispatch(closeComments());
+    } else {
+      dispatch(openComments(params.id));
+    }
+  };
   return (
     <Card className="ListOfPostsBarItem">
       <Card className="ListOfPostsBarItem__User">
@@ -14,10 +29,10 @@ export const ListOfPostsBarItem = () => {
             Some quick example text to build on the card title and make up the
             bulk of the card's content.
           </Card.Text>
-          <Button variant="primary">Go comments</Button>
+          <Button variant="primary" onClick={handleOpenComments}>Go comments</Button>
         </Card.Body>
       </Card>
-      <ListOfPostsBarItemComments />
+      {openCommentsId === params.id && <ListOfPostsBarItemComments id={params.id} />}
     </Card>
   );
 };

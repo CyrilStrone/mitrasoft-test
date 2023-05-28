@@ -5,8 +5,8 @@ export const ListOfPostsBar = () => {
 
   return (
     <div className="ListOfPostsBar">
-      <ListOfPostsBarItem/>
-      <ListOfPostsBarItem/>
+      <ListOfPostsBarItem id={0}/>
+      <ListOfPostsBarItem id={1}/>
     </div>
   );
 };
