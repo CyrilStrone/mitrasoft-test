@@ -8,10 +8,10 @@ export const SideBarUser = () => {
             <img className='SideBarUser__Avatar' src={Avatar} alt="" />
             <div className="SideBarUser__UserInfo">
                 <div className='SideBarUser__UserInfo__Name'>
-                    Name
+                    Cyril Strone
                 </div>
                 <div className='SideBarUser__UserInfo__Mail'>
-                    Mail
+                    cyrilstrone@gmail.com
                 </div>
             </div>
         </div>
