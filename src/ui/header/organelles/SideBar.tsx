@@ -20,9 +20,9 @@ export const SideBar = () => {
       </Offcanvas.Header>
       <Offcanvas.Body className="SideBar">
         <SideBarUser />
-        <NavLink to="/ListOfPosts" onClick={handleClose}>ListOfPosts</NavLink>
-        <NavLink to="/DetailsPage" onClick={handleClose}>DetailsPage</NavLink>
-        <NavLink to="/AboutMe" onClick={handleClose}>AboutMee</NavLink>
+        <NavLink to="/ListOfPosts" onClick={handleClose}>List Of Posts</NavLink>
+        <NavLink to="/DetailsPage" onClick={handleClose}>Details Page</NavLink>
+        <NavLink to="/AboutMe" onClick={handleClose}>About Mee</NavLink>
       </Offcanvas.Body>
     </Offcanvas>
   );
