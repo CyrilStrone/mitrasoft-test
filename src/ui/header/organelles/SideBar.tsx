@@ -22,7 +22,7 @@ export const SideBar = () => {
         <SideBarUser />
         <NavLink to="/ListOfPosts" onClick={handleClose}>ListOfPosts</NavLink>
         <NavLink to="/DetailsPage" onClick={handleClose}>DetailsPage</NavLink>
-        <NavLink to="/AboutMee" onClick={handleClose}>AboutMee</NavLink>
+        <NavLink to="/AboutMe" onClick={handleClose}>AboutMee</NavLink>
       </Offcanvas.Body>
     </Offcanvas>
   );
