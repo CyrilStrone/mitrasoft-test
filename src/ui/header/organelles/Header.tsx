@@ -1,15 +1,14 @@
 import "../styles/Header.css";
 import { Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleSidebar } from "../logics/actions";
-import { headerState } from "../logics/reducers";
+import { RootState } from "../../../redux/store";
+import { toggleSidebar } from "../../../redux/actions/sideBarOpen/actions";
 
 export const Header = () => {
-  const isOpen = useSelector((state: headerState) => state.sidebarOpen);
+  const isOpen = useSelector((state: RootState) => state.sidebar.sidebarOpen);
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    console.log(isOpen)
     dispatch(toggleSidebar(!isOpen));
   };
   return (

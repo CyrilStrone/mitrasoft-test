@@ -1,13 +1,13 @@
 import "../styles/SideBar.css";
-import { toggleSidebar } from "../logics/actions";
 import { SideBarUser } from "../molecules/SideBarUser";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { Offcanvas } from "react-bootstrap";
-import { headerState } from "../logics/reducers";
+import { RootState } from "../../../redux/store";
+import { toggleSidebar } from "../../../redux/actions/sideBarOpen/actions";
 
 export const SideBar = () => {
-  const isOpen = useSelector((state: headerState) => state.sidebarOpen);
+  const isOpen = useSelector((state: RootState) => state.sidebar.sidebarOpen);
   const dispatch = useDispatch();
 
   const handleClose = () => {
@@ -21,8 +21,7 @@ export const SideBar = () => {
       <Offcanvas.Body className="SideBar">
         <SideBarUser />
         <NavLink to="/ListOfPosts" onClick={handleClose}>List Of Posts</NavLink>
-        <NavLink to="/DetailsPage" onClick={handleClose}>Details Page</NavLink>
-        <NavLink to="/AboutMe" onClick={handleClose}>About Mee</NavLink>
+        <NavLink to="/AboutMe" onClick={handleClose}>About Me</NavLink>
       </Offcanvas.Body>
     </Offcanvas>
   );

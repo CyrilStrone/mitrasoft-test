@@ -1,18 +1,21 @@
-import { Button, Card } from "react-bootstrap";
 import "../styles/ListOfPostsBarItem.css";
+import { Button, Card } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import Avatar from '../../../assets/listOfPosts/avatar.jpg'
 import { ListOfPostsBarItemComments } from "./ListOfPostsBarItemComments";
-import { closeComments, openComments } from "../logics/actions";
-import { commentsState } from "../logics/reducers";
-import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../../redux/store";
+import { closeComments, openComments } from "../../../redux/actions/commentOpen/actions";
 
 export interface IListOfPostsBarItem {
   id: any
-  userId?:any
+  userId?: any
 }
 export const ListOfPostsBarItem = (params: IListOfPostsBarItem) => {
   const dispatch = useDispatch();
-  const openCommentsId = useSelector((state: commentsState) => state.openCommentsId);
+  const navigate = useNavigate();
+  const openCommentsId = useSelector((state: RootState) => state.comments.openCommentsId);
+
   const handleOpenComments = () => {
     if (openCommentsId === params.id) {
       dispatch(closeComments());
@@ -24,7 +27,7 @@ export const ListOfPostsBarItem = (params: IListOfPostsBarItem) => {
   return (
     <Card className="ListOfPostsBarItem">
       <Card className="ListOfPostsBarItem__User">
-        {params.userId == null && <Card.Img src={Avatar} />}
+        {params.userId == null && <Card.Img src={Avatar} onClick={() => navigate(`/DetailsPage/:${params.id}`)} />}
         <Card.Body>
           <Card.Title>Card Title</Card.Title>
           <Card.Text>

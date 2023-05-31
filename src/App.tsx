@@ -8,25 +8,25 @@ import { AboutMe } from './pages/aboutMe/organelles/AboutMe';
 import { Header } from './ui/header/organelles/Header';
 import { Provider } from 'react-redux';
 import { SideBar } from './ui/header/organelles/SideBar';
-import headerStore from './ui/header/logics/store';
+import store from './redux/store';
 
 function App() {
-  return (
 
-    <div className="App">
-        <Provider store={headerStore}>
-          <Header />
-          <SideBar />
-        </Provider>
-      <div className="App_Actual">
-        <Routes>
-          <Route path="*" element={<ListOfPosts id={null}/>} />
-          <Route path="/ListOfPosts" element={<ListOfPosts id={null} />} />
-          <Route path="/DetailsPage" element={<DetailsPage />} />
-          <Route path="/AboutMe" element={<AboutMe />} />
-        </Routes>
+  return (
+    <Provider store={store}>
+      <div className="App">
+        <Header />
+        <SideBar />
+        <div className="App_Actual">
+          <Routes>
+            <Route path="*" element={<ListOfPosts id={null} />} />
+            <Route path="/ListOfPosts" element={<ListOfPosts id={null} />} />
+            <Route path="/DetailsPage/:id" element={<DetailsPage />} />
+            <Route path="/AboutMe" element={<AboutMe />} />
+          </Routes>
+        </div>
       </div>
-    </div>
+    </Provider>
   );
 }
 

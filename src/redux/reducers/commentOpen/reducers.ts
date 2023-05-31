@@ -1,4 +1,7 @@
-import { OPEN_COMMENTS, CLOSE_COMMENTS } from './actions';
+import {
+  CLOSE_COMMENTS,
+  OPEN_COMMENTS,
+} from "../../actions/commentOpen/actions";
 
 export interface commentsState {
   openCommentsId: number | null;
