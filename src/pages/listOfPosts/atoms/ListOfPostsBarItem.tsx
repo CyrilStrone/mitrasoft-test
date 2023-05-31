@@ -25,7 +25,6 @@ export const ListOfPostsBarItem = (params: IListOfPostsBarItem) => {
       dispatch(openComments(params.id));
     }
   };
-  console.log(params.userId)
   return (
     <Card className="ListOfPostsBarItem">
       <Card className="ListOfPostsBarItem__User">

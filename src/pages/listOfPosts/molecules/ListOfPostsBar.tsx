@@ -8,11 +8,12 @@ import { addPosts } from "../../../redux/actions/addPosts/action";
 
 export interface IListOfPostsBar {
   id: string | null
+  currentPage: number
+  posts:any
 }
 export const ListOfPostsBar = (params: IListOfPostsBar) => {
-  const posts = useSelector((state: RootState) => state.addPosts.posts);
+ 
   const dispatch = useDispatch();
-
   const requestGetInPost = async () => {
     try {
       const RESULT = await inGetPosts();
@@ -40,13 +41,11 @@ export const ListOfPostsBar = (params: IListOfPostsBar) => {
       requestGetInPost()
     }
   }, [params.id])
-  useEffect(()=>{
-    console.log(posts)
-  },[posts])
   return (
     <div className="ListOfPostsBar">
-      {posts && posts.length > 0 && posts.map((e: any) =>
-        <ListOfPostsBarItem id={e?.id} userId={e?.userId} body={e?.body} title={e?.title} />
+      {params.posts && params.posts.length > 0 && params.posts.map((e: any, id: number) =>
+        id > params.currentPage && id < params.currentPage + 10 &&
+        <ListOfPostsBarItem key={id} id={e?.id} userId={e?.userId} body={e?.body} title={e?.title} />
       )}
     </div>
   );

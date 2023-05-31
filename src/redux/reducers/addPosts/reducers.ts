@@ -1,14 +1,14 @@
 import { actionTypes } from "../../actions/addPosts/action";
 
-export interface initialState {
+export interface addPostsState {
   posts: [];
 }
 
-const initialState: initialState = {
+const addPostsState: addPostsState = {
   posts: [],
 };
 
-const addPostsReducer = (state = initialState, action: { type: any; payload: any }) => {
+const addPostsReducer = (state = addPostsState, action: { type: any; payload: any }) => {
   switch (action.type) {
     case actionTypes.ADD_POSTS:
       return {
