@@ -20,7 +20,7 @@ export const DetailsPageUser = (params: IDetailsPageUser) => {
                     </Card.Text>
                 </Card.Body>
             </Card>
-            <ListOfPosts id={0} />
+            <ListOfPosts id={params.id} />
         </Card>
     );
 };

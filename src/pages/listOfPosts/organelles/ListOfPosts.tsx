@@ -4,7 +4,7 @@ import { ListOfPostsSearch } from "../molecules/ListOfPostsSearch";
 import "../styles/ListOfPosts.css";
 
 export interface IListOfPosts {
-  id: number | null
+  id: string | null
 }
 export const ListOfPosts = (params: IListOfPosts) => {
 

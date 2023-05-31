@@ -10,6 +10,8 @@ import { closeComments, openComments } from "../../../redux/actions/commentOpen/
 export interface IListOfPostsBarItem {
   id: any
   userId?: any
+  title?: string
+  body?: string
 }
 export const ListOfPostsBarItem = (params: IListOfPostsBarItem) => {
   const dispatch = useDispatch();
@@ -27,12 +29,11 @@ export const ListOfPostsBarItem = (params: IListOfPostsBarItem) => {
   return (
     <Card className="ListOfPostsBarItem">
       <Card className="ListOfPostsBarItem__User">
-        {params.userId == null && <Card.Img src={Avatar} onClick={() => navigate(`/DetailsPage/${params.id}`)} />}
+        {params.userId && <Card.Img src={Avatar} onClick={() => navigate(`/DetailsPage/${params.userId}`)} />}
         <Card.Body>
-          <Card.Title>Card Title</Card.Title>
+          <Card.Title>{params?.title}</Card.Title>
           <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+            {params?.body}
           </Card.Text>
           <Button variant="primary" onClick={handleOpenComments}>Go comments</Button>
         </Card.Body>
