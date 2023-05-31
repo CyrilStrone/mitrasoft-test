@@ -27,7 +27,7 @@ export const ListOfPostsBarItem = (params: IListOfPostsBarItem) => {
   return (
     <Card className="ListOfPostsBarItem">
       <Card className="ListOfPostsBarItem__User">
-        {params.userId == null && <Card.Img src={Avatar} onClick={() => navigate(`/DetailsPage/:${params.id}`)} />}
+        {params.userId == null && <Card.Img src={Avatar} onClick={() => navigate(`/DetailsPage/${params.id}`)} />}
         <Card.Body>
           <Card.Title>Card Title</Card.Title>
           <Card.Text>
