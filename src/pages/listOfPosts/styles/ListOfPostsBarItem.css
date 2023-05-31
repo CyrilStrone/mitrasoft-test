@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: row;
   border: none;
+  height: 100%;
 }
 .ListOfPostsBarItem__User img {
   width: 100px;
