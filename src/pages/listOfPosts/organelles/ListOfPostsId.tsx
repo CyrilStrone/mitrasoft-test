@@ -9,6 +9,7 @@ import { RootState } from "../../../redux/store";
 import { increasePage, setPage } from "../../../redux/actions/pagination/action";
 import { addPosts } from "../../../redux/actions/addPosts/action";
 import { addDefaultPost } from "../../../redux/actions/addDefaultPost/action";
+import { Loader } from "../../../ui/loader/organelles/Loader";
 
 export interface IListOfPostsId {
   id: string | null
@@ -21,11 +22,13 @@ export const ListOfPostsId = (params: IListOfPostsId) => {
   const sortCheck = useSelector((state: RootState) => state.sortCheck.sortCheck);
   const dispatch = useDispatch();
 
-  const requestGetInPostId = async (id:string) => {
+  const requestGetInPostId = async (id: string) => {
     try {
       const RESULT = await inGetPostsId(id);
       if (RESULT) {
-        dispatch(addPosts(RESULT))
+        setTimeout(() => {
+          dispatch(addPosts(RESULT));
+        }, 1000);
         dispatch(addDefaultPost(RESULT))
       }
     } catch (error) {
@@ -39,9 +42,8 @@ export const ListOfPostsId = (params: IListOfPostsId) => {
     dispatch(setPage(page));
   };
   const sortAndSearch = (sortBy: string, sortTerm: boolean | null, searchBy: string, searchTerm: string): any => {
-    console.log(defaultPost)
-    let newArray = defaultPost.map((item:any) => ({ ...item }));
-    if (sortBy && sortTerm !== null) {
+    let newArray = defaultPost.map((item: any) => ({ ...item }));
+    if (sortTerm !== null) {
       newArray.sort((a: any, b: any) => {
         if (sortTerm) {
           if (a[sortBy] < b[sortBy]) {
@@ -62,43 +64,45 @@ export const ListOfPostsId = (params: IListOfPostsId) => {
       });
     }
 
-    if (searchBy && searchTerm) {
+    if (searchTerm) {
       return newArray.filter((item: any) =>
         item[searchBy]?.toString().toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
-
     return newArray;
+
   }
   useEffect(() => {
-    console.log(sortCheck)
-    const RESULT = sortAndSearch("title", sortCheck, "title", searchText)
-    if (RESULT) {
-      handleSetPage(0)
-      dispatch(addPosts(RESULT));
+    if (sortCheck !== null || searchText) {
+      const RESULT = sortAndSearch("title", sortCheck, "title", searchText)
+      if (RESULT) {
+        handleSetPage(0)
+        dispatch(addPosts(RESULT));
+      }
     }
-  }, [sortCheck,searchText])
+  }, [sortCheck, searchText])
   useEffect(() => {
     handleScrollToTop()
   }, [currentPage])
+
   useEffect(() => {
-    if (params.id) {
-      requestGetInPostId(params.id)
-    }
-  }, [params.id])
+    dispatch(addDefaultPost([]));
+    dispatch(addPosts([]));
+  }, []);
   useEffect(() => {
-    handleSetPage(0)
-    return () => {
-      dispatch(addPosts([]))
-      dispatch(addDefaultPost([]))
+    if (defaultPost.length === 0 && posts.length === 0 && params.id) {
+      handleSetPage(0);
       dispatch(increasePage());
+      requestGetInPostId(params.id);
     }
-  }, [])
+  }, [defaultPost, posts, params.id])
   return (
     <div className="ListOfPosts">
-      <ListOfPostsSearch />
-      <ListOfPostsBar currentPage={currentPage} handleSetPage={handleSetPage} posts={posts} />
-      {posts.length > 10 && <ListOfPostsPagination handleSetPage={handleSetPage} currentPage={currentPage} posts={posts} />}
+      {posts.length !== 0 ? <>
+        <ListOfPostsSearch />
+        <ListOfPostsBar currentPage={currentPage} handleSetPage={handleSetPage} posts={posts} />
+        {posts.length > 10 && <ListOfPostsPagination handleSetPage={handleSetPage} currentPage={currentPage} posts={posts} />}</> : <Loader />
+      }
     </div>
   );
 };

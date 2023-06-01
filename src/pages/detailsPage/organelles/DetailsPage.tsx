@@ -7,6 +7,7 @@ import { DetailsPageUser } from "../molecules/DetailsPageUser";
 import { addUserInfo, removeUserInfo } from "../../../redux/actions/userInfo/actions";
 import { RootState } from "../../../redux/store";
 import { Button } from "react-bootstrap";
+import { Loader } from "../../../ui/loader/organelles/Loader";
 
 export const DetailsPage = () => {
   const userInfo = useSelector((state: RootState) => state.userInfo.userInfo);
@@ -17,7 +18,9 @@ export const DetailsPage = () => {
     try {
       const RESULT = await inGetUsersId(id);
       if (RESULT) {
-        dispatch(addUserInfo(RESULT))
+        setTimeout(() => {
+          dispatch(addUserInfo(RESULT))
+        }, 1000);
       }
     } catch (error) {
       console.log(error)
@@ -37,7 +40,10 @@ export const DetailsPage = () => {
   return (
     <div className="DetailsPage">
       <Button><NavLink to="/ListOfPosts" >Назад</NavLink></Button>
-      <DetailsPageUser userInfo={userInfo} />
+      {userInfo ?
+        <DetailsPageUser userInfo={userInfo} /> :
+        <Loader />
+      }
     </div>
   );
 };
