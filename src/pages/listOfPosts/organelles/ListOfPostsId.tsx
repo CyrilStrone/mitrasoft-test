@@ -6,10 +6,11 @@ import { ListOfPostsPagination } from "../molecules/ListOfPostsPagination";
 import { ListOfPostsSearch } from "../molecules/ListOfPostsSearch";
 import { inGetPostsId } from "../logics/getPosts";
 import { RootState } from "../../../redux/store";
-import { increasePage, setPage } from "../../../redux/actions/pagination/action";
+import { setPage } from "../../../redux/actions/pagination/action";
 import { addPosts } from "../../../redux/actions/addPosts/action";
 import { addDefaultPost } from "../../../redux/actions/addDefaultPost/action";
 import { Loader } from "../../../ui/loader/organelles/Loader";
+import { useLocation } from "react-router-dom";
 
 export interface IListOfPostsId {
   id: string | null
@@ -73,7 +74,7 @@ export const ListOfPostsId = (params: IListOfPostsId) => {
 
   }
   useEffect(() => {
-    if (sortCheck !== null || searchText) {
+    if (defaultPost) {
       const RESULT = sortAndSearch("title", sortCheck, "title", searchText)
       if (RESULT) {
         handleSetPage(0)
@@ -86,15 +87,10 @@ export const ListOfPostsId = (params: IListOfPostsId) => {
   }, [currentPage])
 
   useEffect(() => {
-    dispatch(addDefaultPost([]));
-    dispatch(addPosts([]));
-  }, []);
-  useEffect(() => {
-    if (defaultPost.length === 0 && posts.length === 0 && params.id) {
-      dispatch(increasePage());
+    if (params.id) {
       requestGetInPostId(params.id);
     }
-  }, [defaultPost, posts, params.id])
+  }, [params.id])
   return (
     <div className="ListOfPosts">
       {posts.length !== 0 ? <>

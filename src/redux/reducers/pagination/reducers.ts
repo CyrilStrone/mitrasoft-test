@@ -17,11 +17,6 @@ const paginationReducer = (
         ...state,
         currentPage: action.payload,
       };
-    case actionTypes.INCREASE_PAGE:
-      return {
-        ...state,
-        currentPage: state.currentPage + 10,
-      };
     default:
       return state;
   }

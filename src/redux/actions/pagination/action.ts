@@ -8,6 +8,3 @@ export const setPage = (page: any) => ({
   payload: page,
 });
 
-export const increasePage = () => ({
-  type: actionTypes.INCREASE_PAGE,
-});

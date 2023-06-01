@@ -8,3 +8,11 @@
   color: black;
   background-color: aliceblue;
 }
+.SideBar{
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+.SideBar button {
+  display: block;
+}

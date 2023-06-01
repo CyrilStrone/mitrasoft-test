@@ -8,9 +8,6 @@ export interface IListOfPostsPagination {
     posts: any
 }
 export const ListOfPostsPagination = (params: IListOfPostsPagination) => {
-    useEffect(() => {
-        params.handleSetPage(0);
-    }, [])
     let active = params.currentPage + 1;
     let items = [];
     for (let number = 1; number <= params.posts.length / 10; number++) {
