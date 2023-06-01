@@ -9,7 +9,6 @@ export interface IDetailsPageUser {
 export const DetailsPageUser = (params: IDetailsPageUser) => {
     return (
         <Card className="DetailsPageUser">
-            {params.userInfo?.id}
             <Card className="DetailsPageUser__User">
                 <Card.Img src={Avatar} />
                 <Card.Body>

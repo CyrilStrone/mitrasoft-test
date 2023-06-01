@@ -1,5 +1,5 @@
-import { ListOfPostsBarItem } from "../atoms/ListOfPostsBarItem";
 import "../styles/ListOfPostsBar.css";
+import { ListOfPostsBarItem } from "../atoms/ListOfPostsBarItem";
 
 export interface IListOfPostsBar {
   currentPage: number

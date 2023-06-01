@@ -9,6 +9,9 @@ import paginationReducer, {
   paginationState,
 } from "./reducers/pagination/reducers";
 import { userInfoReducer, userInfoState } from "./reducers/userInfo/reducers";
+import commentListReducer, {
+  commentListState,
+} from "./reducers/comments/reducers";
 
 export interface RootState {
   sidebar: sideBarState;
@@ -17,6 +20,7 @@ export interface RootState {
   userInfo: userInfoState;
   addPosts: addPostsState;
   pagination: paginationState;
+  commentList: commentListState;
 }
 
 const rootReducer = combineReducers({
@@ -26,6 +30,7 @@ const rootReducer = combineReducers({
   userInfo: userInfoReducer,
   addPosts: addPostsReducer,
   pagination: paginationReducer,
+  commentList: commentListReducer,
 });
 
 const store = createStore(rootReducer);

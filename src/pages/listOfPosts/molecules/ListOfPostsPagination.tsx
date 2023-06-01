@@ -1,5 +1,5 @@
-import { Pagination } from "react-bootstrap";
 import "../styles/ListOfPostsPagination.css";
+import { Pagination } from "react-bootstrap";
 
 export interface IListOfPostsPagination {
     currentPage: number
