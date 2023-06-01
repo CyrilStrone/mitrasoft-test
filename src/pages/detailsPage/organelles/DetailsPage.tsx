@@ -1,21 +1,41 @@
-import { useEffect } from "react";
-import { DetailsPageUser } from "../molecules/DetailsPageUser";
 import "../styles/DetailsPage.css";
-import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { setUserId } from "../../../redux/actions/userId/actions";
+import { inGetUsersId } from "../logics/getUser";
+import { DetailsPageUser } from "../molecules/DetailsPageUser";
+import { addUserInfo, removeUserInfo } from "../../../redux/actions/userInfo/actions";
+import { RootState } from "../../../redux/store";
 
 export const DetailsPage = () => {
+  const userInfo = useSelector((state: RootState) => state.userInfo.userInfo);
   const dispatch = useDispatch();
   const { id } = useParams();
 
-  useEffect(() => {
-    dispatch(setUserId(id));
-  }, [dispatch, id]);
+  const requestGetInUserId = async (id: string) => {
+    try {
+      const RESULT = await inGetUsersId(id);
+      if (RESULT) {
+        dispatch(addUserInfo(RESULT))
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
+  useEffect(() => {
+    if (id) {
+      requestGetInUserId(id)
+    }
+  }, [id])
+  useEffect(() => {
+    return () => {
+      dispatch(removeUserInfo())
+    }
+  }, [])
   return (
     <div className="DetailsPage">
-      <DetailsPageUser id={id} />
+      <DetailsPageUser userInfo={userInfo} />
     </div>
   );
 };

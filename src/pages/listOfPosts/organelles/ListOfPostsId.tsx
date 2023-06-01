@@ -7,19 +7,19 @@ import { RootState } from "../../../redux/store";
 import { increasePage, setPage } from "../../../redux/actions/pagination/action";
 import { useEffect } from "react";
 import { addPosts } from "../../../redux/actions/addPosts/action";
-import { inGetPosts } from "../logics/getPosts";
+import { inGetPostsId } from "../logics/getPosts";
 
-export interface IListOfPosts {
+export interface IListOfPostsId {
   id: string | null
 }
-export const ListOfPosts = (params: IListOfPosts) => {
+export const ListOfPostsId = (params: IListOfPostsId) => {
   const currentPage = useSelector((state: RootState) => state.pagination.currentPage);
   const posts = useSelector((state: RootState) => state.addPosts.posts);
   const dispatch = useDispatch();
 
-  const requestGetInPost = async () => {
+  const requestGetInPostId = async (id: string) => {
     try {
-      const RESULT = await inGetPosts();
+      const RESULT = await inGetPostsId(id);
       if (RESULT) {
         dispatch(addPosts(RESULT))
       }
@@ -34,13 +34,16 @@ export const ListOfPosts = (params: IListOfPosts) => {
     dispatch(setPage(page));
   };
 
-
+  useEffect(() => {
+    if (params.id) {
+      requestGetInPostId(params.id)
+    }
+  }, [params.id])
   useEffect(() => {
     handleScrollToTop()
   }, [currentPage])
   useEffect(() => {
     handleSetPage(0)
-    requestGetInPost()
     return (() => {
       dispatch(addPosts([]))
       dispatch(increasePage());
