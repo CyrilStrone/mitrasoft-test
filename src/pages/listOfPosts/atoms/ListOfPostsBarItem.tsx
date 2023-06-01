@@ -2,11 +2,11 @@ import "../styles/ListOfPostsBarItem.css";
 import { Button, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import { ListOfPostsBarItemComments } from "./ListOfPostsBarItemComments";
 import Avatar from '../../../assets/listOfPosts/avatar.jpg'
 import { RootState } from "../../../redux/store";
 import { closeComments, openComments } from "../../../redux/actions/commentOpen/actions";
-import { useEffect } from "react";
 
 export interface IListOfPostsBarItem {
   id: any
@@ -26,6 +26,7 @@ export const ListOfPostsBarItem = (params: IListOfPostsBarItem) => {
       dispatch(openComments(params.id));
     }
   };
+  
   useEffect(() => {
     return () => {
       dispatch(closeComments());

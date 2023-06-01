@@ -1,9 +1,9 @@
-import { Button, FloatingLabel, Form, ToggleButton } from "react-bootstrap";
 import "../styles/ListOfPostsSearch.css";
+import { Button, FloatingLabel, Form, ToggleButton } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 import { RootState } from "../../../redux/store";
 import { clearSearchText, setSearchText } from "../../../redux/actions/search/action";
-import { useEffect } from "react";
 import { setSortCheck } from "../../../redux/actions/sortCheck/actions";
 import { addPosts } from "../../../redux/actions/addPosts/action";
 import { setPage } from "../../../redux/actions/pagination/action";

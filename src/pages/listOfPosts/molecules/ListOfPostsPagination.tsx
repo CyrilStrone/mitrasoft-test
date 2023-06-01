@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import "../styles/ListOfPostsPagination.css";
 import { Pagination } from "react-bootstrap";
 

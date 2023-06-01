@@ -1,7 +1,7 @@
 import "../styles/DetailsPage.css";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { inGetUsersId } from "../logics/getUser";
 import { DetailsPageUser } from "../molecules/DetailsPageUser";
 import { addUserInfo, removeUserInfo } from "../../../redux/actions/userInfo/actions";
@@ -42,6 +42,7 @@ export const DetailsPage = () => {
       }
     }
   }
+
   useEffect(() => {
     if (id) {
       requestGetInUserId(id)

@@ -1,10 +1,10 @@
 import "../styles/ListOfPostsBarItemComments.css";
 import { Card } from "react-bootstrap";
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { ListOfPostsBarItemCommentsItem } from "./ListOfPostsBarItemCommentsItem";
 import { inGetCommentsId } from "../logics/getComments";
 import { RootState } from "../../../redux/store";
-import { useDispatch, useSelector } from "react-redux";
 import { addComment, clearComments } from "../../../redux/actions/comments/actions";
 import { Loader } from "../../../ui/loader/organelles/Loader";
 
@@ -14,6 +14,7 @@ export interface IListOfPostsBarItemComments {
 export const ListOfPostsBarItemComments = (params: IListOfPostsBarItemComments) => {
     const dispatch = useDispatch();
     const comments = useSelector((state: RootState) => state.commentList.comments);
+
     const requestGetInCommentsId = async (id: string) => {
         try {
             const RESULT = await inGetCommentsId(id);
@@ -27,6 +28,7 @@ export const ListOfPostsBarItemComments = (params: IListOfPostsBarItemComments) 
             console.log(error)
         }
     }
+
     useEffect(() => {
         if (params.id) {
             requestGetInCommentsId(params.id)

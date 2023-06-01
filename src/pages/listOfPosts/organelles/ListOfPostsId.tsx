@@ -10,7 +10,6 @@ import { setPage } from "../../../redux/actions/pagination/action";
 import { addPosts } from "../../../redux/actions/addPosts/action";
 import { addDefaultPost } from "../../../redux/actions/addDefaultPost/action";
 import { Loader } from "../../../ui/loader/organelles/Loader";
-import { useLocation } from "react-router-dom";
 
 export interface IListOfPostsId {
   id: string | null
@@ -64,15 +63,14 @@ export const ListOfPostsId = (params: IListOfPostsId) => {
         return 0;
       });
     }
-
     if (searchTerm) {
       return newArray.filter((item: any) =>
         item[searchBy]?.toString().toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
     return newArray;
-
   }
+
   useEffect(() => {
     if (defaultPost) {
       const RESULT = sortAndSearch("title", sortCheck, "title", searchText)
@@ -85,7 +83,6 @@ export const ListOfPostsId = (params: IListOfPostsId) => {
   useEffect(() => {
     handleScrollToTop()
   }, [currentPage])
-
   useEffect(() => {
     if (params.id) {
       requestGetInPostId(params.id);
