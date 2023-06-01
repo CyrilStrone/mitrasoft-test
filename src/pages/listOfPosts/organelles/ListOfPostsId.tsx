@@ -91,7 +91,6 @@ export const ListOfPostsId = (params: IListOfPostsId) => {
   }, []);
   useEffect(() => {
     if (defaultPost.length === 0 && posts.length === 0 && params.id) {
-      handleSetPage(0);
       dispatch(increasePage());
       requestGetInPostId(params.id);
     }

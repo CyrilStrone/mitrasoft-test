@@ -89,7 +89,6 @@ export const ListOfPosts = () => {
   }, []);
   useEffect(() => {
     if (defaultPost.length === 0 && posts.length === 0) {
-      handleSetPage(0);
       dispatch(increasePage());
       requestGetInPost();
     }
