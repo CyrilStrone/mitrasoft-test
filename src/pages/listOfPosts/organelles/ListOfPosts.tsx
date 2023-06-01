@@ -40,7 +40,8 @@ export const ListOfPosts = (params: IListOfPosts) => {
     dispatch(setPage(page));
   };
   const sortAndSearch = (sortBy: string, sortTerm: boolean | null, searchBy: string, searchTerm: string): any => {
-    let newArray = [...defaultPost];
+    console.log(defaultPost)
+    let newArray = defaultPost.map((item:any) => ({ ...item }));
     if (sortBy && sortTerm !== null) {
       newArray.sort((a: any, b: any) => {
         if (sortTerm) {
