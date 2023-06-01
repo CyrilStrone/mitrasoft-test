@@ -1,13 +1,13 @@
+import "../styles/ListOfPosts.css";
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 import { ListOfPostsBar } from "../molecules/ListOfPostsBar";
 import { ListOfPostsPagination } from "../molecules/ListOfPostsPagination";
 import { ListOfPostsSearch } from "../molecules/ListOfPostsSearch";
-import "../styles/ListOfPosts.css";
+import { inGetPostsId } from "../logics/getPosts";
 import { RootState } from "../../../redux/store";
 import { increasePage, setPage } from "../../../redux/actions/pagination/action";
-import { useEffect } from "react";
 import { addPosts } from "../../../redux/actions/addPosts/action";
-import { inGetPostsId } from "../logics/getPosts";
 
 export interface IListOfPostsId {
   id: string | null
