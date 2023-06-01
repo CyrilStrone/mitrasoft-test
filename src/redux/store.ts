@@ -12,6 +12,9 @@ import { userInfoReducer, userInfoState } from "./reducers/userInfo/reducers";
 import commentListReducer, {
   commentListState,
 } from "./reducers/comments/reducers";
+import searchReducer, { SearchState } from "./reducers/search/reducers";
+import sortReducer, { SortState } from "./reducers/sortCheck/reducers";
+import addDefaultPostsReducer, { addDefaultPostsState } from "./reducers/addDefaultPost/reducers";
 
 export interface RootState {
   sidebar: sideBarState;
@@ -19,8 +22,11 @@ export interface RootState {
   userId: userIdStates;
   userInfo: userInfoState;
   addPosts: addPostsState;
+  addDefaultPosts: addDefaultPostsState;
   pagination: paginationState;
   commentList: commentListState;
+  search: SearchState;
+  sortCheck: SortState;
 }
 
 const rootReducer = combineReducers({
@@ -29,8 +35,11 @@ const rootReducer = combineReducers({
   userId: userIdReducer,
   userInfo: userInfoReducer,
   addPosts: addPostsReducer,
+  addDefaultPosts: addDefaultPostsReducer,
   pagination: paginationReducer,
   commentList: commentListReducer,
+  search: searchReducer,
+  sortCheck: sortReducer,
 });
 
 const store = createStore(rootReducer);

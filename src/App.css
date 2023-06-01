@@ -1,5 +1,10 @@
-.App{
+.App {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+  box-sizing: border-box;
 }
-.App_Actual{
-    height: calc(100vh - 50px);
+.App_Actual {
+  height: calc(100vh - 50px);
 }

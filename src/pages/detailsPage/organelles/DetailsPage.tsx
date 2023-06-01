@@ -1,11 +1,12 @@
 import "../styles/DetailsPage.css";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { inGetUsersId } from "../logics/getUser";
 import { DetailsPageUser } from "../molecules/DetailsPageUser";
 import { addUserInfo, removeUserInfo } from "../../../redux/actions/userInfo/actions";
 import { RootState } from "../../../redux/store";
+import { Button } from "react-bootstrap";
 
 export const DetailsPage = () => {
   const userInfo = useSelector((state: RootState) => state.userInfo.userInfo);
@@ -35,6 +36,7 @@ export const DetailsPage = () => {
   }, [])
   return (
     <div className="DetailsPage">
+      <Button><NavLink to="/ListOfPosts" >Назад</NavLink></Button>
       <DetailsPageUser userInfo={userInfo} />
     </div>
   );

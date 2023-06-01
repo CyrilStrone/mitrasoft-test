@@ -1,5 +1,5 @@
-import { Card } from "react-bootstrap";
 import "../styles/ListOfPostsBarItemCommentsItem.css";
+import { Card } from "react-bootstrap";
 
 export interface IListOfPostsBarItemCommentsItem {
   email: string

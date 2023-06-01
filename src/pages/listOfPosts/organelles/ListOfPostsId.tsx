@@ -15,6 +15,8 @@ export interface IListOfPostsId {
 export const ListOfPostsId = (params: IListOfPostsId) => {
   const currentPage = useSelector((state: RootState) => state.pagination.currentPage);
   const posts = useSelector((state: RootState) => state.addPosts.posts);
+  const searchText = useSelector((state: RootState) => state.search.searchText);
+  const sortCheck = useSelector((state: RootState) => state.sortCheck.sortCheck);
   const dispatch = useDispatch();
 
   const requestGetInPostId = async (id: string) => {
@@ -33,7 +35,7 @@ export const ListOfPostsId = (params: IListOfPostsId) => {
   const handleSetPage = (page: number) => {
     dispatch(setPage(page));
   };
-
+  
   useEffect(() => {
     if (params.id) {
       requestGetInPostId(params.id)
@@ -52,8 +54,8 @@ export const ListOfPostsId = (params: IListOfPostsId) => {
   return (
     <div className="ListOfPosts">
       <ListOfPostsSearch />
-      <ListOfPostsBar currentPage={currentPage} posts={posts} />
-      <ListOfPostsPagination handleSetPage={handleSetPage} currentPage={currentPage} posts={posts} />
+      <ListOfPostsBar currentPage={currentPage} handleSetPage={handleSetPage} posts={posts} />
+      {posts.length > 10 && <ListOfPostsPagination handleSetPage={handleSetPage} currentPage={currentPage} posts={posts} />}
     </div>
   );
 };

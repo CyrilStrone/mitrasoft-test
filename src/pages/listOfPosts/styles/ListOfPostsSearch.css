@@ -1,4 +1,9 @@
-.ListOfPostsSearch{
-    display: flex;
-    gap: 20px;
+.ListOfPostsSearch {
+  display: flex;
+  gap: 20px;
+}
+.ListOfPostsSearch label {
+  margin: 0 !important;
+  display: flex;
+  align-items: center;
 }
