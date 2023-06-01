@@ -27,7 +27,7 @@ export const ListOfPosts = (params: IListOfPosts) => {
       const RESULT = await inGetPosts();
       if (RESULT) {
         dispatch(addPosts(RESULT))
-        defaultPost.length === 0 && dispatch(addDefaultPost(RESULT))
+        dispatch(addDefaultPost(RESULT))
       }
     } catch (error) {
       console.log(error)
@@ -85,11 +85,11 @@ export const ListOfPosts = (params: IListOfPosts) => {
   useEffect(() => {
     handleSetPage(0)
     requestGetInPost()
-    return (() => {
+    return () => {
       dispatch(addPosts([]))
       dispatch(addDefaultPost([]))
       dispatch(increasePage());
-    })
+    }
   }, [])
   return (
     <div className="ListOfPosts">
