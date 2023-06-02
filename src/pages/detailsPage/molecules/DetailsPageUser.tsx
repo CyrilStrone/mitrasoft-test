@@ -1,7 +1,7 @@
 import "../styles/DetailsPageUser.css";
 import Avatar from '../../../assets/listOfPosts/avatar.jpg'
 import { Card } from "react-bootstrap";
-import { ListOfPostsId } from "../../listOfPosts/organelles/ListOfPostsId";
+import { ListOfPosts } from "../../listOfPosts/organelles/ListOfPostsId";
 
 export interface IDetailsPageUser {
     userInfo: any
@@ -24,7 +24,7 @@ export const DetailsPageUser = (params: IDetailsPageUser) => {
                     </Card.Text>
                 </Card.Body>
             </Card>
-            <ListOfPostsId id={params.userInfo?.id} />
+            <ListOfPosts id={params.userInfo?.id} />
         </Card>
     );
 };

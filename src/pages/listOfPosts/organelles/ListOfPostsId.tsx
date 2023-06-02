@@ -10,10 +10,10 @@ import { removePagination, setPagination } from "../../../redux/actions/paginati
 import { setAddDefaultPosts, setAddPosts } from "../../../redux/actions/addPosts/action";
 import { Loader } from "../../../ui/loader/organelles/Loader";
 
-export interface IListOfPostsId {
+export interface IListOfPosts {
   id?: string | null
 }
-export const ListOfPostsId = (params: IListOfPostsId) => {
+export const ListOfPosts = (params: IListOfPosts) => {
   const currentPagination = useSelector((state: RootState) => state.pagination.currentPagination);
   const posts = useSelector((state: RootState) => state.addPosts.posts);
   const defaultPosts = useSelector((state: RootState) => state.addPosts.defaultPosts);

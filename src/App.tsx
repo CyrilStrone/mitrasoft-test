@@ -12,7 +12,7 @@ import { removeSearchText } from './redux/actions/searchText/action';
 import { removeSideBarOpen } from './redux/actions/sideBarOpen/actions';
 import { removePagination } from './redux/actions/pagination/action';
 import { removeAddDefaultPosts, removeAddPosts } from './redux/actions/addPosts/action';
-import { ListOfPostsId } from './pages/listOfPosts/organelles/ListOfPostsId';
+import { ListOfPosts } from './pages/listOfPosts/organelles/ListOfPostsId';
 
 function App() {
   const location = useLocation();
@@ -31,8 +31,8 @@ function App() {
       <SideBar />
       <div className="App_Actual">
         <Routes>
-          <Route path="*" element={<ListOfPostsId />} />
-          <Route path="/ListOfPosts" element={<ListOfPostsId />} />
+          <Route path="*" element={<ListOfPosts />} />
+          <Route path="/ListOfPosts" element={<ListOfPosts />} />
           <Route path="/DetailsPage/:id" element={<DetailsPage />} />
           <Route path="/AboutMe" element={<AboutMe />} />
         </Routes>
