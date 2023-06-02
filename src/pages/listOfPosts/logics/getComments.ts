@@ -1,4 +1,4 @@
-import { axiosInstance } from "../../../ui/functions/axiosInstance";
+import { axiosInstance } from "../../../ui/functions/axiosInstanceCreate";
 
 export const inGetCommentsId = async (id: string) => {
   return axiosInstance

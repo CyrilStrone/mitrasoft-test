@@ -1,4 +1,4 @@
-import { axiosInstance } from "../../../ui/functions/axiosInstance";
+import { axiosInstance } from "../../../ui/functions/axiosInstanceCreate";
 
 export const inGetPosts = async () => {
   return axiosInstance
