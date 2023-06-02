@@ -1,45 +1,40 @@
 import { createStore, combineReducers } from "redux";
-import { headerReducer, sideBarState } from "./reducers/sideBarOpen/reducers";
-import commentsReducer, {
-  commentsState,
-} from "./reducers/commentOpen/reducers";
+import { sideBarReducer, sideBarState } from "./reducers/sideBarOpen/reducers";
 import userIdReducer, { userIdStates } from "./reducers/userId/reducers";
 import addPostsReducer, { addPostsState } from "./reducers/addPosts/reducers";
 import paginationReducer, {
   paginationState,
 } from "./reducers/pagination/reducers";
 import { userInfoReducer, userInfoState } from "./reducers/userInfo/reducers";
-import commentListReducer, {
-  commentListState,
-} from "./reducers/comments/reducers";
-import searchReducer, { SearchState } from "./reducers/search/reducers";
-import sortReducer, { SortState } from "./reducers/sortCheck/reducers";
-import addDefaultPostsReducer, { addDefaultPostsState } from "./reducers/addDefaultPost/reducers";
+import commentsReducer, { commentsState } from "./reducers/comments/reducers";
+import searchReducer, { searchState } from "./reducers/searchText/reducers";
+import sortReducer, { sortState } from "./reducers/sortCheck/reducers";
+import commentsCheckReducer, {
+  commentsCheckState,
+} from "./reducers/commentsCheck/reducers";
 
 export interface RootState {
-  sidebar: sideBarState;
-  comments: commentsState;
-  userId: userIdStates;
   userInfo: userInfoState;
-  addPosts: addPostsState;
-  addDefaultPosts: addDefaultPostsState;
+  userId: userIdStates;
+  sortCheck: sortState;
+  sidebar: sideBarState;
+  search: searchState;
   pagination: paginationState;
-  commentList: commentListState;
-  search: SearchState;
-  sortCheck: SortState;
+  comments: commentsState;
+  commentsCheck: commentsCheckState;
+  addPosts: addPostsState;
 }
 
 const rootReducer = combineReducers({
-  sidebar: headerReducer,
-  comments: commentsReducer,
-  userId: userIdReducer,
   userInfo: userInfoReducer,
-  addPosts: addPostsReducer,
-  addDefaultPosts: addDefaultPostsReducer,
-  pagination: paginationReducer,
-  commentList: commentListReducer,
-  search: searchReducer,
+  userId: userIdReducer,
   sortCheck: sortReducer,
+  sidebar: sideBarReducer,
+  search: searchReducer,
+  pagination: paginationReducer,
+  comments: commentsReducer,
+  commentsCheck: commentsCheckReducer,
+  addPosts: addPostsReducer,
 });
 
 const store = createStore(rootReducer);

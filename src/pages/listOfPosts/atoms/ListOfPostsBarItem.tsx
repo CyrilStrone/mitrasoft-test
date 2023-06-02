@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { ListOfPostsBarItemComments } from "./ListOfPostsBarItemComments";
 import Avatar from '../../../assets/listOfPosts/avatar.jpg'
 import { RootState } from "../../../redux/store";
-import { closeComments, openComments } from "../../../redux/actions/commentOpen/actions";
+import { closeComments, openComments } from "../../../redux/actions/commentsCheck/actions";
 
 export interface IListOfPostsBarItem {
   id: any
@@ -17,7 +17,7 @@ export interface IListOfPostsBarItem {
 export const ListOfPostsBarItem = (params: IListOfPostsBarItem) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const openCommentsId = useSelector((state: RootState) => state.comments.openCommentsId);
+  const openCommentsId = useSelector((state: RootState) => state.commentsCheck.openCommentsId);
 
   const handleOpenComments = () => {
     if (openCommentsId === params.id) {
@@ -26,7 +26,7 @@ export const ListOfPostsBarItem = (params: IListOfPostsBarItem) => {
       dispatch(openComments(params.id));
     }
   };
-  
+
   useEffect(() => {
     return () => {
       dispatch(closeComments());

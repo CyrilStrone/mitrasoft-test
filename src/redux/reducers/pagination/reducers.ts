@@ -1,21 +1,27 @@
-import { actionTypes } from "../../actions/pagination/action";
+import { ActionTypesPagination } from "../../actions/pagination/action";
 
 export interface paginationState {
-  currentPage: 0;
+  currentPagination: number;
 }
 
-const paginationState: paginationState = {
-  currentPage: 0,
+const initialState: paginationState = {
+  currentPagination: 0,
 };
+
 const paginationReducer = (
-  state = paginationState,
+  state = initialState,
   action: { type: any; payload: any }
-) => {
+): paginationState => {
   switch (action.type) {
-    case actionTypes.SET_PAGE:
+    case ActionTypesPagination.SET_PAGINATION:
       return {
         ...state,
-        currentPage: action.payload,
+        currentPagination: action.payload,
+      };
+    case ActionTypesPagination.REMOVE_PAGINATION:
+      return {
+        ...state,
+        currentPagination: 0,
       };
     default:
       return state;

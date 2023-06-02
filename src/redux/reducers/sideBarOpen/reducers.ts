@@ -1,26 +1,27 @@
-import { Reducer } from "redux";
-import {
-  ActionTypes,
-  ToggleSidebarAction,
-} from "../../actions/sideBarOpen/actions";
+import { ActionTypesSideBarOpen } from "../../actions/sideBarOpen/actions";
 
 export interface sideBarState {
-  sidebarOpen: boolean;
+  sidebarOpen: boolean | null;
 }
 
 const initialState: sideBarState = {
   sidebarOpen: false,
 };
 
-export const headerReducer: Reducer<sideBarState, ToggleSidebarAction> = (
+export const sideBarReducer = (
   state = initialState,
-  action
+  action: { type: any; payload: any }
 ) => {
   switch (action.type) {
-    case ActionTypes.TOGGLE_SIDEBAR:
+    case ActionTypesSideBarOpen.SET_TOGGLE_SIDEBAR:
       return {
         ...state,
-        sidebarOpen: action.isOpen,
+        sidebarOpen: action.payload,
+      };
+    case ActionTypesSideBarOpen.REMOVE_TOGGLE_SIDEBAR:
+      return {
+        ...state,
+        sidebarOpen: null,
       };
     default:
       return state;

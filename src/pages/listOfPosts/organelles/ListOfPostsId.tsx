@@ -4,32 +4,43 @@ import { useEffect } from "react";
 import { ListOfPostsBar } from "../molecules/ListOfPostsBar";
 import { ListOfPostsPagination } from "../molecules/ListOfPostsPagination";
 import { ListOfPostsSearch } from "../molecules/ListOfPostsSearch";
-import { inGetPostsId } from "../logics/getPosts";
+import { inGetPosts, inGetPostsId } from "../logics/getPosts";
 import { RootState } from "../../../redux/store";
-import { setPage } from "../../../redux/actions/pagination/action";
-import { addPosts } from "../../../redux/actions/addPosts/action";
-import { addDefaultPost } from "../../../redux/actions/addDefaultPost/action";
+import { removePagination, setPagination } from "../../../redux/actions/pagination/action";
+import { setAddDefaultPosts, setAddPosts } from "../../../redux/actions/addPosts/action";
 import { Loader } from "../../../ui/loader/organelles/Loader";
 
 export interface IListOfPostsId {
-  id: string | null
+  id?: string | null
 }
 export const ListOfPostsId = (params: IListOfPostsId) => {
-  const currentPage = useSelector((state: RootState) => state.pagination.currentPage);
+  const currentPagination = useSelector((state: RootState) => state.pagination.currentPagination);
   const posts = useSelector((state: RootState) => state.addPosts.posts);
-  const defaultPost = useSelector((state: RootState) => state.addDefaultPosts.defaultPost);
+  const defaultPosts = useSelector((state: RootState) => state.addPosts.defaultPosts);
   const searchText = useSelector((state: RootState) => state.search.searchText);
   const sortCheck = useSelector((state: RootState) => state.sortCheck.sortCheck);
   const dispatch = useDispatch();
-
+  const requestGetInPost = async () => {
+    try {
+      const RESULT = await inGetPosts();
+      if (RESULT) {
+        setTimeout(() => {
+          dispatch(setAddPosts(RESULT));
+        }, 1000);
+        dispatch(setAddDefaultPosts(RESULT))
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
   const requestGetInPostId = async (id: string) => {
     try {
       const RESULT = await inGetPostsId(id);
       if (RESULT) {
         setTimeout(() => {
-          dispatch(addPosts(RESULT));
+          dispatch(setAddPosts(RESULT));
         }, 1000);
-        dispatch(addDefaultPost(RESULT))
+        dispatch(setAddDefaultPosts(RESULT))
       }
     } catch (error) {
       console.log(error)
@@ -38,11 +49,11 @@ export const ListOfPostsId = (params: IListOfPostsId) => {
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-  const handleSetPage = (page: number) => {
-    dispatch(setPage(page));
+  const handleSetPagination = (page: number) => {
+    dispatch(setPagination(page));
   };
   const sortAndSearch = (sortBy: string, sortTerm: boolean | null, searchBy: string, searchTerm: string): any => {
-    let newArray = defaultPost.map((item: any) => ({ ...item }));
+    let newArray = defaultPosts.map((item: any) => ({ ...item }));
     if (sortTerm !== null) {
       newArray.sort((a: any, b: any) => {
         if (sortTerm) {
@@ -72,28 +83,30 @@ export const ListOfPostsId = (params: IListOfPostsId) => {
   }
 
   useEffect(() => {
-    if (defaultPost) {
+    if (defaultPosts && defaultPosts.length !== 0) {
       const RESULT = sortAndSearch("title", sortCheck, "title", searchText)
-      if (RESULT) {
-        handleSetPage(0)
-        dispatch(addPosts(RESULT));
+      if (RESULT && RESULT.length !== 0) {
+        dispatch(removePagination())
+        dispatch(setAddPosts(RESULT));
       }
     }
   }, [sortCheck, searchText])
   useEffect(() => {
     handleScrollToTop()
-  }, [currentPage])
+  }, [currentPagination])
   useEffect(() => {
     if (params.id) {
       requestGetInPostId(params.id);
+    } else {
+      requestGetInPost()
     }
-  }, [params.id])
+  }, [params])
   return (
     <div className="ListOfPosts">
       {posts.length !== 0 ? <>
         <ListOfPostsSearch />
-        <ListOfPostsBar currentPage={currentPage} handleSetPage={handleSetPage} posts={posts} />
-        {posts.length > 10 && <ListOfPostsPagination handleSetPage={handleSetPage} currentPage={currentPage} posts={posts} />}</> : <Loader />
+        <ListOfPostsBar currentPagination={currentPagination} posts={posts} />
+        {posts.length > 10 && <ListOfPostsPagination handleSetPagination={handleSetPagination} currentPagination={currentPagination} posts={posts} />}</> : <Loader />
       }
     </div>
   );

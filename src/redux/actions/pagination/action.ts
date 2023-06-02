@@ -1,10 +1,13 @@
-export const actionTypes = {
-  SET_PAGE: "SET_PAGE",
-  INCREASE_PAGE: "INCREASE_PAGE",
-};
+export enum ActionTypesPagination {
+  SET_PAGINATION = "SET_PAGINATION",
+  REMOVE_PAGINATION = "REMOVE_PAGINATION",
+}
 
-export const setPage = (page: any) => ({
-  type: actionTypes.SET_PAGE,
+export const setPagination = (page: any) => ({
+  type: ActionTypesPagination.SET_PAGINATION,
   payload: page,
 });
 
+export const removePagination = (): any => ({
+  type: ActionTypesPagination.REMOVE_PAGINATION,
+});

@@ -1,29 +1,24 @@
-import { Reducer } from "redux";
-import {
-  ActionTypes,
-  AddUserInfoAction,
-  RemoveUserInfoAction,
-} from "../../actions/userInfo/actions";
+import { ActionTypesUserInfo } from "../../actions/userInfo/actions";
 
 export interface userInfoState {
   userInfo: any | null;
 }
 
-const userInfoState: userInfoState = {
+const initialState: userInfoState = {
   userInfo: null,
 };
 
-export const userInfoReducer: Reducer<
-  userInfoState,
-  AddUserInfoAction | RemoveUserInfoAction
-> = (state = userInfoState, action) => {
+export const userInfoReducer = (
+  state = initialState,
+  action: { type: any; payload: any }
+) => {
   switch (action.type) {
-    case ActionTypes.ADD_USER_INFO:
+    case ActionTypesUserInfo.SET_USER_INFO:
       return {
         ...state,
         userInfo: action.payload,
       };
-    case ActionTypes.REMOVE_USER_INFO:
+    case ActionTypesUserInfo.REMOVE_USER_INFO:
       return {
         ...state,
         userInfo: null,

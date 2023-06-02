@@ -1,19 +1,39 @@
-import { actionTypes } from "../../actions/addPosts/action";
+import { ActionTypesAddPosts } from "../../actions/addPosts/action";
 
 export interface addPostsState {
-  posts: [];
+  posts: any[];
+  defaultPosts: any[];
 }
 
 const initialState: addPostsState = {
   posts: [],
+  defaultPosts: [],
 };
 
-const addPostsReducer = (state = initialState, action: { type: any; payload: any }) => {
+const addPostsReducer = (
+  state = initialState,
+  action: { type: any; payload: any }
+) => {
   switch (action.type) {
-    case actionTypes.ADD_POSTS:
+    case ActionTypesAddPosts.SET_ADD_POSTS:
       return {
         ...state,
         posts: action.payload,
+      };
+    case ActionTypesAddPosts.SET_ADD_DEFAULT_POSTS:
+      return {
+        ...state,
+        defaultPosts: action.payload,
+      };
+    case ActionTypesAddPosts.REMOVE_ADD_POSTS:
+      return {
+        ...state,
+        posts: [],
+      };
+    case ActionTypesAddPosts.REMOVE_ADD_DEFAULT_POSTS:
+      return {
+        ...state,
+        defaultPosts: [],
       };
     default:
       return state;

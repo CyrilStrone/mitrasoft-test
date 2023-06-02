@@ -1,19 +1,27 @@
-import { ActionTypes } from "../../actions/userId/actions";
+import { ActionTypesUserId } from "../../actions/userId/actions";
 
 export interface userIdStates {
   userId: number | null;
 }
 
-const userIdStates: userIdStates = {
+const initialState: userIdStates = {
   userId: null,
 };
 
-const userIdReducer = (state = userIdStates, action: { type: any; payload: any; }) => {
+const userIdReducer = (
+  state = initialState,
+  action: { type: any; payload: any }
+) => {
   switch (action.type) {
-    case ActionTypes.SET_USER_ID:
+    case ActionTypesUserId.SET_USER_ID:
       return {
         ...state,
         userId: action.payload,
+      };
+    case ActionTypesUserId.REMOVE_USER_ID:
+      return {
+        ...state,
+        userInfo: null,
       };
     default:
       return state;

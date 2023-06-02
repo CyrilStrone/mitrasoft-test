@@ -1,16 +1,14 @@
-import { Action } from 'redux';
-
-export enum ActionTypes {
-  TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR',
+export enum ActionTypesSideBarOpen {
+  SET_TOGGLE_SIDEBAR = "SET_TOGGLE_SIDEBAR",
+  REMOVE_TOGGLE_SIDEBAR = "REMOVE_TOGGLE_SIDEBAR",
 }
 
-export interface ToggleSidebarAction extends Action<ActionTypes.TOGGLE_SIDEBAR> {
-  isOpen: boolean;
-}
+export const setSideBarOpen = (isOpen: boolean) => ({
+  type: ActionTypesSideBarOpen.SET_TOGGLE_SIDEBAR,
+  payload: isOpen,
+});
 
-export function toggleSidebar(isOpen: boolean): ToggleSidebarAction {
-  return {
-    type: ActionTypes.TOGGLE_SIDEBAR,
-    isOpen,
-  };
-}
+export const removeSideBarOpen = (): any => ({
+  type: ActionTypesSideBarOpen.REMOVE_TOGGLE_SIDEBAR,
+});
+

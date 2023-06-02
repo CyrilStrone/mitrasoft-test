@@ -1,17 +1,24 @@
-export interface SortState {
+import { ActionTypesSortCheck } from "../../actions/sortCheck/actions";
+
+export interface sortState {
   sortCheck: boolean | null;
 }
 
-const initialState: SortState = {
+const initialState: sortState = {
   sortCheck: null,
 };
 
-const sortReducer = (state = initialState, action: any): SortState => {
+const sortReducer = (state = initialState, action: any): sortState => {
   switch (action.type) {
-    case 'SET_SORT_CHECK':
+    case ActionTypesSortCheck.SET_SORT_CHECK:
       return {
         ...state,
         sortCheck: action.payload,
+      };
+    case ActionTypesSortCheck.REMOVE_SORT_CHECK:
+      return {
+        ...state,
+        sortCheck: null,
       };
     default:
       return state;

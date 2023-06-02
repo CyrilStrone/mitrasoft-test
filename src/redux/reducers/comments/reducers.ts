@@ -1,19 +1,21 @@
-export interface commentListState {
+import { ActionTypesComments } from "../../actions/comments/actions";
+
+export interface commentsState {
   comments: any[];
 }
 
-const initialState: commentListState = {
+const initialState: commentsState = {
   comments: [],
 };
 
-const commentListReducer = (state = initialState, action: any): commentListState => {
+const commentsReducer = (state = initialState, action: any): commentsState => {
   switch (action.type) {
-    case "ADD_COMMENT":
+    case ActionTypesComments.SET_COMMENTS:
       return {
         ...state,
         comments: action.payload,
       };
-    case "CLEAR_COMMENTS":
+    case ActionTypesComments.REMOVE_COMMENTS:
       return {
         ...state,
         comments: [],
@@ -23,4 +25,4 @@ const commentListReducer = (state = initialState, action: any): commentListState
   }
 };
 
-export default commentListReducer;
+export default commentsReducer;

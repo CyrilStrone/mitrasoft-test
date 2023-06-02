@@ -3,27 +3,23 @@ import { Button, FloatingLabel, Form, ToggleButton } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { RootState } from "../../../redux/store";
-import { clearSearchText, setSearchText } from "../../../redux/actions/search/action";
+import { removeSearchText, setSearchText } from "../../../redux/actions/searchText/action";
 import { setSortCheck } from "../../../redux/actions/sortCheck/actions";
-import { addPosts } from "../../../redux/actions/addPosts/action";
-import { setPage } from "../../../redux/actions/pagination/action";
+import { setAddPosts } from "../../../redux/actions/addPosts/action";
+import { removePagination } from "../../../redux/actions/pagination/action";
+import { removeSideBarOpen } from "../../../redux/actions/sideBarOpen/actions";
 
 export const ListOfPostsSearch = () => {
     const dispatch = useDispatch();
-    const defaultPost = useSelector((state: RootState) => state.addDefaultPosts.defaultPost);
+    const defaultPosts = useSelector((state: RootState) => state.addPosts.defaultPosts);
     const searchText = useSelector((state: RootState) => state.search.searchText);
     const sortCheck = useSelector((state: RootState) => state.sortCheck.sortCheck);
     const goExit = () => {
-        dispatch(setPage(0));
-        dispatch(clearSearchText())
-        dispatch(setSortCheck(null))
-        dispatch(addPosts(defaultPost))
+        dispatch(removePagination());
+        dispatch(removeSearchText())
+        dispatch(removeSideBarOpen())
+        dispatch(setAddPosts(defaultPosts))
     }
-    useEffect(() => {
-        return () => {
-            goExit()
-        }
-    }, [])
     return (
         <div className="ListOfPostsSearch">
             <FloatingLabel
