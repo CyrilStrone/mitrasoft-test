@@ -7,6 +7,7 @@ import { ListOfPostsBarItemComments } from "./ListOfPostsBarItemComments";
 import Avatar from '../../../assets/listOfPosts/avatar.jpg'
 import { RootState } from "../../../redux/store";
 import { closeComments, openComments } from "../../../redux/actions/commentsCheck/actions";
+import { navigateRemove } from "../../../ui/functions/navigateRemove";
 
 export interface IListOfPostsBarItem {
   id: any
@@ -36,7 +37,7 @@ export const ListOfPostsBarItem = (params: IListOfPostsBarItem) => {
   return (
     <Card className="ListOfPostsBarItem">
       <Card className="ListOfPostsBarItem__User">
-        {params.userId && <Card.Img src={Avatar} onClick={() =>!params.idUser && navigate(`/DetailsPage/${params.userId}`)} />}
+        {params.userId && <Card.Img src={Avatar} onClick={() => !params.idUser && navigateRemove(`/DetailsPage/${params.userId}`, dispatch, navigate)} />}
         <Card.Body>
           <Card.Title>{params?.title}</Card.Title>
           <Card.Text>
