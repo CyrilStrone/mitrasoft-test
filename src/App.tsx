@@ -16,6 +16,7 @@ import { ListOfPosts } from './pages/listOfPosts/organelles/ListOfPosts';
 import { removeSortCheck } from './redux/actions/sortCheck/actions';
 import { removeUserInfo } from './redux/actions/userInfo/actions';
 import { openPosts } from './redux/actions/postsCheck/actions';
+import { removeUserInfoCheck, setUserInfoCheck } from './redux/actions/userInfoCheck/actions';
 
 function App() {
   const location = useLocation();
@@ -23,6 +24,7 @@ function App() {
   useEffect(() => {
     console.log("change location:",location)
     dispatch(removeUserInfo())
+    dispatch(removeUserInfoCheck())
     dispatch(removePagination());
     dispatch(removeSearchText())
     dispatch(removeSortCheck());

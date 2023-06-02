@@ -8,10 +8,12 @@ import { setUserInfo } from "../../../redux/actions/userInfo/actions";
 import { RootState } from "../../../redux/store";
 import { Button } from "react-bootstrap";
 import { Loader } from "../../../ui/loader/organelles/Loader";
+import { setUserInfoCheck } from "../../../redux/actions/userInfoCheck/actions";
 
 export const DetailsPage = () => {
   const navigate = useNavigate()
   const userInfo = useSelector((state: RootState) => state.userInfo.userInfo);
+  const userInfoCheck = useSelector((state: RootState) => state.userInfoCheck.userInfoCheck);
   const dispatch = useDispatch();
   const { id } = useParams();
 
@@ -22,9 +24,13 @@ export const DetailsPage = () => {
         setTimeout(() => {
           dispatch(setUserInfo(RESULT))
         }, 1000);
+        dispatch(setUserInfoCheck(true))
+      } else {
+        dispatch(setUserInfoCheck(false))
       }
     } catch (error) {
       console.log(error)
+      dispatch(setUserInfoCheck(false))
     }
   }
   const handleClick = async () => {
@@ -39,9 +45,10 @@ export const DetailsPage = () => {
   return (
     <div className="DetailsPage">
       <Button onClick={handleClick}>Назад</Button>
-      {userInfo ?
+
+      {userInfoCheck ? userInfo ?
         <DetailsPageUser userInfo={userInfo} /> :
-        <Loader />
+        <Loader /> : <>No user</>
       }
     </div>
   );

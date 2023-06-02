@@ -13,9 +13,11 @@ import commentsCheckReducer, {
   commentsCheckState,
 } from "./reducers/commentsCheck/reducers";
 import postsCheckReducer, { postsCheckState } from "./reducers/postsCheck/reducers";
+import userInfoCheckReducer, { userInfoCheckState } from "./reducers/userInfoCheck/reducers";
 
 export interface RootState {
   userInfo: userInfoState;
+  userInfoCheck: userInfoCheckState;
   userId: userIdStates;
   sortCheck: sortState;
   sidebar: sideBarState;
@@ -29,6 +31,7 @@ export interface RootState {
 
 const rootReducer = combineReducers({
   userInfo: userInfoReducer,
+  userInfoCheck: userInfoCheckReducer,
   userId: userIdReducer,
   sortCheck: sortReducer,
   sidebar: sideBarReducer,
