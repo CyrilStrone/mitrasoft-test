@@ -12,8 +12,15 @@ import sortReducer, { sortState } from "./reducers/sortCheck/reducers";
 import commentsCheckReducer, {
   commentsCheckState,
 } from "./reducers/commentsCheck/reducers";
-import postsCheckReducer, { postsCheckState } from "./reducers/postsCheck/reducers";
-import userInfoCheckReducer, { userInfoCheckState } from "./reducers/userInfoCheck/reducers";
+import postsCheckReducer, {
+  postsCheckState,
+} from "./reducers/postsCheck/reducers";
+import userInfoCheckReducer, {
+  userInfoCheckState,
+} from "./reducers/userInfoCheck/reducers";
+import postCommentsCheckReducer, {
+  postCommentsCheckState,
+} from "./reducers/postCommentsCheck/reducers";
 
 export interface RootState {
   userInfo: userInfoState;
@@ -26,6 +33,7 @@ export interface RootState {
   comments: commentsState;
   commentsCheck: commentsCheckState;
   postsCheck: postsCheckState;
+  postCommentsCheck: postCommentsCheckState;
   addPosts: addPostsState;
 }
 
@@ -40,6 +48,7 @@ const rootReducer = combineReducers({
   comments: commentsReducer,
   commentsCheck: commentsCheckReducer,
   postsCheck: postsCheckReducer,
+  postCommentsCheck: postCommentsCheckReducer,
   addPosts: addPostsReducer,
 });
 

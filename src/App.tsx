@@ -15,23 +15,25 @@ import { removeAddDefaultPosts, removeAddPosts } from './redux/actions/addPosts/
 import { ListOfPosts } from './pages/listOfPosts/organelles/ListOfPosts';
 import { removeSortCheck } from './redux/actions/sortCheck/actions';
 import { removeUserInfo } from './redux/actions/userInfo/actions';
-import { openPosts } from './redux/actions/postsCheck/actions';
-import { removeUserInfoCheck, setUserInfoCheck } from './redux/actions/userInfoCheck/actions';
+import { removeUserInfoCheck } from './redux/actions/userInfoCheck/actions';
+import { removePostCommentsCheck } from './redux/actions/postCommentsCheck/actions';
+import { removePostsCheck } from './redux/actions/postsCheck/actions';
 
 function App() {
   const location = useLocation();
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log("change location:",location)
+    console.log("change location:", location)
+    dispatch(removeAddPosts())
+    dispatch(removeAddDefaultPosts());
     dispatch(removeUserInfo())
     dispatch(removeUserInfoCheck())
     dispatch(removePagination());
     dispatch(removeSearchText())
     dispatch(removeSortCheck());
     dispatch(removeSideBarOpen())
-    dispatch(removeAddPosts())
-    dispatch(removeAddDefaultPosts());
-    dispatch(openPosts())
+    dispatch(removePostCommentsCheck())
+    dispatch(removePostsCheck())
   }, [location])
   return (
     <div className="App">

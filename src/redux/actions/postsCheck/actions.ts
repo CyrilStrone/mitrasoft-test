@@ -1,12 +1,13 @@
 export enum ActionTypesPostsCheck {
-  OPEN_POSTS = "OPEN_POSTS",
-  CLOSE_POSTS = "CLOSE_POSTS",
+  SET_POSTS_CHECK = "SET_POSTS_CHECK",
+  REMOVE_POSTS_CHECK = "REMOVE_POSTS_CHECK",
 }
 
-export const openPosts = () => ({
-  type: ActionTypesPostsCheck.OPEN_POSTS,
+export const setPostsCheck = (check:boolean) => ({
+  type: ActionTypesPostsCheck.SET_POSTS_CHECK,
+  payload: check,
 });
 
-export const closePosts = () => ({
-  type: ActionTypesPostsCheck.CLOSE_POSTS,
+export const removePostsCheck = () => ({
+  type: ActionTypesPostsCheck.REMOVE_POSTS_CHECK,
 });

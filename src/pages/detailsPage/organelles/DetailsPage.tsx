@@ -45,7 +45,6 @@ export const DetailsPage = () => {
   return (
     <div className="DetailsPage">
       <Button onClick={handleClick}>Назад</Button>
-
       {userInfoCheck ? userInfo ?
         <DetailsPageUser userInfo={userInfo} /> :
         <Loader /> : <>No user</>

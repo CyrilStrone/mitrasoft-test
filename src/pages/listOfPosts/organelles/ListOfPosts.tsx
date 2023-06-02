@@ -9,7 +9,7 @@ import { RootState } from "../../../redux/store";
 import { removePagination, setPagination } from "../../../redux/actions/pagination/action";
 import { removeAddPosts, setAddDefaultPosts, setAddPosts } from "../../../redux/actions/addPosts/action";
 import { Loader } from "../../../ui/loader/organelles/Loader";
-import { closePosts, openPosts } from "../../../redux/actions/postsCheck/actions";
+import { setPostsCheck } from "../../../redux/actions/postsCheck/actions";
 
 export interface IListOfPosts {
   id?: string | null
@@ -30,12 +30,12 @@ export const ListOfPosts = (params: IListOfPosts) => {
           dispatch(setAddPosts(RESULT));
         }, 1000);
         dispatch(setAddDefaultPosts(RESULT))
-        dispatch(openPosts())
+        dispatch(setPostsCheck(true))
       } else {
-        dispatch(closePosts())
+        dispatch(setPostsCheck(false))
       }
     } catch (error) {
-      dispatch(closePosts())
+      dispatch(setPostsCheck(false))
       console.log(error)
     }
   }
@@ -47,12 +47,12 @@ export const ListOfPosts = (params: IListOfPosts) => {
           dispatch(setAddPosts(RESULT));
         }, 1000);
         dispatch(setAddDefaultPosts(RESULT))
-        dispatch(openPosts())
+        dispatch(setPostsCheck(true))
       } else {
-        dispatch(closePosts())
+        dispatch(setPostsCheck(false))
       }
     } catch (error) {
-      dispatch(closePosts())
+      dispatch(setPostsCheck(false))
       console.log(error)
     }
   }
@@ -96,11 +96,11 @@ export const ListOfPosts = (params: IListOfPosts) => {
     if (defaultPosts && defaultPosts.length !== 0) {
       const RESULT = sortAndSearch("title", sortCheck, "title", searchText)
       if (RESULT && RESULT.length !== 0) {
-        dispatch(openPosts())
+        dispatch(setPostsCheck(true))
         dispatch(removePagination())
         dispatch(setAddPosts(RESULT));
       } else {
-        dispatch(closePosts())
+        dispatch(setPostsCheck(false))
       }
 
     }

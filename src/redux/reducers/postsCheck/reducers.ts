@@ -10,15 +10,15 @@ const initialState: postsCheckState = {
 
 const postsCheckReducer = (state = initialState, action: any): postsCheckState => {
   switch (action.type) {
-    case ActionTypesPostsCheck.OPEN_POSTS:
+    case ActionTypesPostsCheck.SET_POSTS_CHECK:
+      return {
+        ...state,
+        postsCheck: action.payload,
+      };
+    case ActionTypesPostsCheck.REMOVE_POSTS_CHECK:
       return {
         ...state,
         postsCheck: true,
-      };
-    case ActionTypesPostsCheck.CLOSE_POSTS:
-      return {
-        ...state,
-        postsCheck: false,
       };
     default:
       return state;
