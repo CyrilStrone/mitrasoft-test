@@ -9,7 +9,7 @@ axiosInstance.interceptors.response.use(
   (response) => response,
   async (error: AxiosError) => {
     if (error?.response?.status === 401) {
-     
+      console.log("error 401")
     }
   }
 );

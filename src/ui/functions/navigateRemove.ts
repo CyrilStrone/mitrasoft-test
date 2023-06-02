@@ -2,6 +2,7 @@ import {
   removeAddDefaultPosts,
   removeAddPosts,
 } from "../../redux/actions/addPosts/action";
+import { removeComments } from "../../redux/actions/comments/actions";
 import { removePagination } from "../../redux/actions/pagination/action";
 import { removePostCommentsCheck } from "../../redux/actions/postCommentsCheck/actions";
 import { removePostsCheck } from "../../redux/actions/postsCheck/actions";
@@ -22,15 +23,20 @@ export const navigateRemove = async (
     if (RESULT2) {
       const RESULT3 = await dispatch(removeUserInfo());
       if (RESULT3) {
-        dispatch(removeUserInfoCheck());
-        dispatch(removePagination());
-        dispatch(removeSearchText());
-        dispatch(removeSortCheck());
-        dispatch(removeSideBarOpen());
-        dispatch(removePostCommentsCheck());
-        dispatch(removePostsCheck());
-        dispatch(removeSideBarOpen());
-        link && navigate(link);
+        const RESULT4 = await dispatch(removeSearchText());
+        if (RESULT4) {
+          const RESULT5 = await dispatch(removeSortCheck());
+          if (RESULT5) {
+            dispatch(removeComments());
+            dispatch(removeUserInfoCheck());
+            dispatch(removePagination());
+            dispatch(removeSideBarOpen());
+            dispatch(removePostCommentsCheck());
+            dispatch(removePostsCheck());
+            dispatch(removeSideBarOpen());
+            link && navigate(link);
+          }
+        }
       }
     }
   }

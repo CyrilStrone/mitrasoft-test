@@ -8,7 +8,7 @@ const initialState: paginationState = {
   currentPagination: 0,
 };
 
-const paginationReducer = (
+export const paginationReducer = (
   state = initialState,
   action: { type: any; payload: any }
 ): paginationState => {
@@ -27,5 +27,3 @@ const paginationReducer = (
       return state;
   }
 };
-
-export default paginationReducer;

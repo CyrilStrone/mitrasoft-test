@@ -7,7 +7,7 @@ import { ListOfPostsSearch } from "../molecules/ListOfPostsSearch";
 import { inGetPosts, inGetPostsId } from "../logics/getPosts";
 import { RootState } from "../../../redux/store";
 import { removePagination, setPagination } from "../../../redux/actions/pagination/action";
-import { removeAddPosts, setAddDefaultPosts, setAddPosts } from "../../../redux/actions/addPosts/action";
+import { setAddDefaultPosts, setAddPosts } from "../../../redux/actions/addPosts/action";
 import { Loader } from "../../../ui/loader/organelles/Loader";
 import { setPostsCheck } from "../../../redux/actions/postsCheck/actions";
 

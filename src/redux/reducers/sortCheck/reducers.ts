@@ -8,7 +8,7 @@ const initialState: sortState = {
   sortCheck: null,
 };
 
-const sortReducer = (state = initialState, action: any): sortState => {
+export const sortReducer = (state = initialState, action: any): sortState => {
   switch (action.type) {
     case ActionTypesSortCheck.SET_SORT_CHECK:
       return {
@@ -24,5 +24,3 @@ const sortReducer = (state = initialState, action: any): sortState => {
       return state;
   }
 };
-
-export default sortReducer;

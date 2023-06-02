@@ -10,12 +10,13 @@ const initialState: addPostsState = {
   defaultPosts: [],
 };
 
-const addPostsReducer = (
+export const addPostsReducer = (
   state = initialState,
   action: { type: any; payload: any }
 ) => {
   switch (action.type) {
     case ActionTypesAddPosts.SET_ADD_POSTS:
+      console.log("SET_ADD_POSTS", action.type, action.payload);
       return {
         ...state,
         posts: action.payload,
@@ -26,6 +27,7 @@ const addPostsReducer = (
         defaultPosts: action.payload,
       };
     case ActionTypesAddPosts.REMOVE_ADD_POSTS:
+      console.log("REMOVE_ADD_POSTS", action.type, action.payload);
       return {
         ...state,
         posts: [],
@@ -39,5 +41,3 @@ const addPostsReducer = (
       return state;
   }
 };
-
-export default addPostsReducer;

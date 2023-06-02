@@ -8,7 +8,6 @@ import { Header } from './ui/header/organelles/Header';
 import { SideBar } from './ui/header/organelles/SideBar';
 import { ListOfPosts } from './pages/listOfPosts/organelles/ListOfPosts';
 function App() {
-
   return (
     <div className="App">
       <Header />

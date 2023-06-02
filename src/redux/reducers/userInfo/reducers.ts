@@ -14,11 +14,13 @@ export const userInfoReducer = (
 ) => {
   switch (action.type) {
     case ActionTypesUserInfo.SET_USER_INFO:
+      console.log("SET_USER_INFO", action.type, action.payload);
       return {
         ...state,
         userInfo: action.payload,
       };
     case ActionTypesUserInfo.REMOVE_USER_INFO:
+      console.log("REMOVE_USER_INFO", action.type, action.payload);
       return {
         ...state,
         userInfo: null,

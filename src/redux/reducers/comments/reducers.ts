@@ -8,14 +8,19 @@ const initialState: commentsState = {
   comments: [],
 };
 
-const commentsReducer = (state = initialState, action: any): commentsState => {
+export const commentsReducer = (
+  state = initialState,
+  action: any
+): commentsState => {
   switch (action.type) {
     case ActionTypesComments.SET_COMMENTS:
+      console.log("SET_COMMENTS", action.type, action.payload);
       return {
         ...state,
         comments: action.payload,
       };
     case ActionTypesComments.REMOVE_COMMENTS:
+      console.log("REMOVE_COMMENTS", action.type, action.payload);
       return {
         ...state,
         comments: [],
@@ -24,5 +29,3 @@ const commentsReducer = (state = initialState, action: any): commentsState => {
       return state;
   }
 };
-
-export default commentsReducer;

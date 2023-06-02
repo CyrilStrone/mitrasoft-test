@@ -8,7 +8,10 @@ const initialState: userInfoCheckState = {
   userInfoCheck: false,
 };
 
-const userInfoCheckReducer = (state = initialState, action: any): userInfoCheckState => {
+export const userInfoCheckReducer = (
+  state = initialState,
+  action: any
+): userInfoCheckState => {
   switch (action.type) {
     case ActionTypesUserInfoCheck.SET_USER_INFO_CHECK:
       return {
@@ -24,5 +27,3 @@ const userInfoCheckReducer = (state = initialState, action: any): userInfoCheckS
       return state;
   }
 };
-
-export default userInfoCheckReducer;

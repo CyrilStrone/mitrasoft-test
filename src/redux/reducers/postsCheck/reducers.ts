@@ -8,7 +8,10 @@ const initialState: postsCheckState = {
   postsCheck: true,
 };
 
-const postsCheckReducer = (state = initialState, action: any): postsCheckState => {
+export const postsCheckReducer = (
+  state = initialState,
+  action: any
+): postsCheckState => {
   switch (action.type) {
     case ActionTypesPostsCheck.SET_POSTS_CHECK:
       return {
@@ -24,5 +27,3 @@ const postsCheckReducer = (state = initialState, action: any): postsCheckState =
       return state;
   }
 };
-
-export default postsCheckReducer;

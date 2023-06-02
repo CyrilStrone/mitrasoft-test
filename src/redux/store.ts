@@ -1,26 +1,31 @@
 import { createStore, combineReducers } from "redux";
-import { sideBarReducer, sideBarState } from "./reducers/sideBarOpen/reducers";
-import userIdReducer, { userIdStates } from "./reducers/userId/reducers";
-import addPostsReducer, { addPostsState } from "./reducers/addPosts/reducers";
-import paginationReducer, {
-  paginationState,
-} from "./reducers/pagination/reducers";
 import { userInfoReducer, userInfoState } from "./reducers/userInfo/reducers";
-import commentsReducer, { commentsState } from "./reducers/comments/reducers";
-import searchReducer, { searchState } from "./reducers/searchText/reducers";
-import sortReducer, { sortState } from "./reducers/sortCheck/reducers";
-import commentsCheckReducer, {
-  commentsCheckState,
-} from "./reducers/commentsCheck/reducers";
-import postsCheckReducer, {
-  postsCheckState,
-} from "./reducers/postsCheck/reducers";
-import userInfoCheckReducer, {
+import {
+  userInfoCheckReducer,
   userInfoCheckState,
 } from "./reducers/userInfoCheck/reducers";
-import postCommentsCheckReducer, {
+import { userIdReducer, userIdStates } from "./reducers/userId/reducers";
+import { sortReducer, sortState } from "./reducers/sortCheck/reducers";
+import { sideBarReducer, sideBarState } from "./reducers/sideBarOpen/reducers";
+import { searchReducer, searchState } from "./reducers/searchText/reducers";
+import {
+  paginationReducer,
+  paginationState,
+} from "./reducers/pagination/reducers";
+import { commentsReducer, commentsState } from "./reducers/comments/reducers";
+import {
+  commentsCheckReducer,
+  commentsCheckState,
+} from "./reducers/commentsCheck/reducers";
+import {
+  postsCheckReducer,
+  postsCheckState,
+} from "./reducers/postsCheck/reducers";
+import {
+  postCommentsCheckReducer,
   postCommentsCheckState,
 } from "./reducers/postCommentsCheck/reducers";
+import { addPostsReducer, addPostsState } from "./reducers/addPosts/reducers";
 
 export interface RootState {
   userInfo: userInfoState;

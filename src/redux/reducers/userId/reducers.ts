@@ -8,7 +8,7 @@ const initialState: userIdStates = {
   userId: null,
 };
 
-const userIdReducer = (
+export const userIdReducer = (
   state = initialState,
   action: { type: any; payload: any }
 ) => {
@@ -27,5 +27,3 @@ const userIdReducer = (
       return state;
   }
 };
-
-export default userIdReducer;

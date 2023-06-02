@@ -8,7 +8,10 @@ const initialState: commentsCheckState = {
   openCommentsId: null,
 };
 
-const commentsCheckReducer = (state = initialState, action: any) => {
+export const commentsCheckReducer = (
+  state = initialState,
+  action: any
+): commentsCheckState => {
   switch (action.type) {
     case ActionTypesCommentsCheck.OPEN_COMMENTS:
       return {
@@ -24,5 +27,3 @@ const commentsCheckReducer = (state = initialState, action: any) => {
       return state;
   }
 };
-
-export default commentsCheckReducer;

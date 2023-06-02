@@ -8,7 +8,10 @@ const initialState: searchState = {
   searchText: "",
 };
 
-const searchReducer = (state = initialState, action: any): searchState => {
+export const searchReducer = (
+  state = initialState,
+  action: any
+): searchState => {
   switch (action.type) {
     case ActionTypesSearch.SET_SEARCH_TEXT:
       return {
@@ -24,5 +27,3 @@ const searchReducer = (state = initialState, action: any): searchState => {
       return state;
   }
 };
-
-export default searchReducer;

@@ -8,7 +8,10 @@ const initialState: postCommentsCheckState = {
   postCommentsCheck: false,
 };
 
-const postCommentsCheckReducer = (state = initialState, action: any): postCommentsCheckState => {
+export const postCommentsCheckReducer = (
+  state = initialState,
+  action: any
+): postCommentsCheckState => {
   switch (action.type) {
     case ActionTypesPostCommentsCheck.SET_POST_COMMENTS_CHECK:
       return {
@@ -24,5 +27,3 @@ const postCommentsCheckReducer = (state = initialState, action: any): postCommen
       return state;
   }
 };
-
-export default postCommentsCheckReducer;
