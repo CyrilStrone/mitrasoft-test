@@ -1,4 +1,4 @@
-import { axiosInstance } from "../../../ui/functions/AxiosInstance";
+import { axiosInstance } from "../../../ui/functions/axiosInstance";
 
 export const inGetUsersId = async (id: string) => {
   return axiosInstance
