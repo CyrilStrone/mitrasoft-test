@@ -9,6 +9,7 @@ import { RootState } from "../../../redux/store";
 import { Button } from "react-bootstrap";
 import { Loader } from "../../../ui/loader/organelles/Loader";
 import { setUserInfoCheck } from "../../../redux/actions/userInfoCheck/actions";
+import { removeAddDefaultPosts, removeAddPosts } from "../../../redux/actions/addPosts/action";
 
 export const DetailsPage = () => {
   const navigate = useNavigate()
@@ -34,7 +35,13 @@ export const DetailsPage = () => {
     }
   }
   const handleClick = async () => {
-    navigate('/ListOfPosts')
+    const RESULT1 = await dispatch(removeAddPosts())
+    if (RESULT1) {
+      const RESULT2 = await dispatch(removeAddDefaultPosts());
+      if (RESULT2) {
+        navigate('/ListOfPosts')
+      }
+    }
   }
 
   useEffect(() => {
