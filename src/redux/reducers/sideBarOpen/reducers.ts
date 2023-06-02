@@ -21,7 +21,7 @@ export const sideBarReducer = (
     case ActionTypesSideBarOpen.REMOVE_TOGGLE_SIDEBAR:
       return {
         ...state,
-        sidebarOpen: null,
+        sidebarOpen: false,
       };
     default:
       return state;

@@ -7,13 +7,9 @@ import { setSideBarOpen } from "../../../redux/actions/sideBarOpen/actions";
 export const Header = () => {
   const isOpen = useSelector((state: RootState) => state.sidebar.sidebarOpen);
   const dispatch = useDispatch();
-
-  const handleClick = () => {
-    dispatch(setSideBarOpen(!isOpen));
-  };
   return (
     <div className="Header">
-      <Button onClick={handleClick} variant="primary">Menu</Button>
+      <Button onClick={() => dispatch(setSideBarOpen(!isOpen))} variant="primary">Menu</Button>
     </div>
   );
 };

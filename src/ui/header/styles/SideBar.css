@@ -8,7 +8,7 @@
   color: black;
   background-color: aliceblue;
 }
-.SideBar{
+.SideBar {
   display: flex;
   gap: 20px;
   flex-direction: column;

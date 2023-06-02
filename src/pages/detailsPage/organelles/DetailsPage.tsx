@@ -9,7 +9,7 @@ import { RootState } from "../../../redux/store";
 import { Button } from "react-bootstrap";
 import { Loader } from "../../../ui/loader/organelles/Loader";
 import { setUserInfoCheck } from "../../../redux/actions/userInfoCheck/actions";
-import { removeAddDefaultPosts, removeAddPosts } from "../../../redux/actions/addPosts/action";
+import { navigateRemove } from "../../../ui/functions/navigateRemove";
 
 export const DetailsPage = () => {
   const navigate = useNavigate()
@@ -34,15 +34,6 @@ export const DetailsPage = () => {
       dispatch(setUserInfoCheck(false))
     }
   }
-  const handleClick = async () => {
-    const RESULT1 = await dispatch(removeAddPosts())
-    if (RESULT1) {
-      const RESULT2 = await dispatch(removeAddDefaultPosts());
-      if (RESULT2) {
-        navigate('/ListOfPosts')
-      }
-    }
-  }
 
   useEffect(() => {
     if (id) {
@@ -51,7 +42,7 @@ export const DetailsPage = () => {
   }, [id])
   return (
     <div className="DetailsPage">
-      <Button onClick={handleClick}>Назад</Button>
+      <Button onClick={() => navigateRemove("/ListOfPosts", dispatch, navigate)}>Назад</Button>
       {userInfoCheck ? userInfo ?
         <DetailsPageUser userInfo={userInfo} /> :
         <Loader /> : <>No user</>
