@@ -1,7 +1,7 @@
 import "../styles/DetailsPageUser.css";
 import Avatar from '../../../assets/listOfPosts/avatar.jpg'
 import { Card } from "react-bootstrap";
-import { ListOfPosts } from "../../listOfPosts/organelles/ListOfPostsId";
+import { ListOfPosts } from "../../listOfPosts/organelles/ListOfPosts";
 
 export interface IDetailsPageUser {
     userInfo: any

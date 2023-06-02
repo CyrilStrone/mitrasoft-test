@@ -9,7 +9,7 @@ export interface IListOfPostsPagination {
 export const ListOfPostsPagination = (params: IListOfPostsPagination) => {
     let active = params.currentPagination + 1;
     let items = [];
-    for (let number = 1; number <= params.posts.length / 10; number++) {
+    for (let number = 1; number <=  Math.ceil(params.posts.length / 10); number++) {
         items.push(
             <Pagination.Item key={number} active={number === active} onClick={() => { params.handleSetPagination(number - 1) }}>
                 {number}

@@ -1,13 +1,11 @@
 import "../styles/ListOfPostsSearch.css";
 import { Button, FloatingLabel, Form, ToggleButton } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
 import { RootState } from "../../../redux/store";
 import { removeSearchText, setSearchText } from "../../../redux/actions/searchText/action";
-import { setSortCheck } from "../../../redux/actions/sortCheck/actions";
+import { removeSortCheck, setSortCheck } from "../../../redux/actions/sortCheck/actions";
 import { setAddPosts } from "../../../redux/actions/addPosts/action";
 import { removePagination } from "../../../redux/actions/pagination/action";
-import { removeSideBarOpen } from "../../../redux/actions/sideBarOpen/actions";
 
 export const ListOfPostsSearch = () => {
     const dispatch = useDispatch();
@@ -15,9 +13,10 @@ export const ListOfPostsSearch = () => {
     const searchText = useSelector((state: RootState) => state.search.searchText);
     const sortCheck = useSelector((state: RootState) => state.sortCheck.sortCheck);
     const goExit = () => {
-        dispatch(removePagination());
+        console.log("defaultPosts",defaultPosts)
+        dispatch(removePagination())
         dispatch(removeSearchText())
-        dispatch(removeSideBarOpen())
+        dispatch(removeSortCheck());
         dispatch(setAddPosts(defaultPosts))
     }
     return (

@@ -9,7 +9,6 @@ export const Header = () => {
   const dispatch = useDispatch();
 
   const handleClick = () => {
-    console.log(!isOpen)
     dispatch(setSideBarOpen(!isOpen));
   };
   return (

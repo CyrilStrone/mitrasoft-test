@@ -7,8 +7,9 @@ import { ListOfPostsSearch } from "../molecules/ListOfPostsSearch";
 import { inGetPosts, inGetPostsId } from "../logics/getPosts";
 import { RootState } from "../../../redux/store";
 import { removePagination, setPagination } from "../../../redux/actions/pagination/action";
-import { setAddDefaultPosts, setAddPosts } from "../../../redux/actions/addPosts/action";
+import { removeAddPosts, setAddDefaultPosts, setAddPosts } from "../../../redux/actions/addPosts/action";
 import { Loader } from "../../../ui/loader/organelles/Loader";
+import { closePosts, openPosts } from "../../../redux/actions/postsCheck/actions";
 
 export interface IListOfPosts {
   id?: string | null
@@ -16,6 +17,7 @@ export interface IListOfPosts {
 export const ListOfPosts = (params: IListOfPosts) => {
   const currentPagination = useSelector((state: RootState) => state.pagination.currentPagination);
   const posts = useSelector((state: RootState) => state.addPosts.posts);
+  const postsCheck = useSelector((state: RootState) => state.postsCheck.postsCheck);
   const defaultPosts = useSelector((state: RootState) => state.addPosts.defaultPosts);
   const searchText = useSelector((state: RootState) => state.search.searchText);
   const sortCheck = useSelector((state: RootState) => state.sortCheck.sortCheck);
@@ -28,8 +30,12 @@ export const ListOfPosts = (params: IListOfPosts) => {
           dispatch(setAddPosts(RESULT));
         }, 1000);
         dispatch(setAddDefaultPosts(RESULT))
+        dispatch(openPosts())
+      } else {
+        dispatch(closePosts())
       }
     } catch (error) {
+      dispatch(closePosts())
       console.log(error)
     }
   }
@@ -41,8 +47,12 @@ export const ListOfPosts = (params: IListOfPosts) => {
           dispatch(setAddPosts(RESULT));
         }, 1000);
         dispatch(setAddDefaultPosts(RESULT))
+        dispatch(openPosts())
+      } else {
+        dispatch(closePosts())
       }
     } catch (error) {
+      dispatch(closePosts())
       console.log(error)
     }
   }
@@ -86,9 +96,13 @@ export const ListOfPosts = (params: IListOfPosts) => {
     if (defaultPosts && defaultPosts.length !== 0) {
       const RESULT = sortAndSearch("title", sortCheck, "title", searchText)
       if (RESULT && RESULT.length !== 0) {
+        dispatch(openPosts())
         dispatch(removePagination())
         dispatch(setAddPosts(RESULT));
+      } else {
+        dispatch(closePosts())
       }
+
     }
   }, [sortCheck, searchText])
   useEffect(() => {
@@ -103,10 +117,11 @@ export const ListOfPosts = (params: IListOfPosts) => {
   }, [params])
   return (
     <div className="ListOfPosts">
-      {posts.length !== 0 ? <>
-        <ListOfPostsSearch />
-        <ListOfPostsBar currentPagination={currentPagination} posts={posts} />
+      <ListOfPostsSearch />
+      {postsCheck ? posts.length !== 0 ? <>
+        <ListOfPostsBar idUser={params.id} currentPagination={currentPagination} posts={posts} />
         {posts.length > 10 && <ListOfPostsPagination handleSetPagination={handleSetPagination} currentPagination={currentPagination} posts={posts} />}</> : <Loader />
+        : <>No posts</>
       }
     </div>
   );

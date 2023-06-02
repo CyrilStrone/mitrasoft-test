@@ -12,6 +12,7 @@ import sortReducer, { sortState } from "./reducers/sortCheck/reducers";
 import commentsCheckReducer, {
   commentsCheckState,
 } from "./reducers/commentsCheck/reducers";
+import postsCheckReducer, { postsCheckState } from "./reducers/postsCheck/reducers";
 
 export interface RootState {
   userInfo: userInfoState;
@@ -22,6 +23,7 @@ export interface RootState {
   pagination: paginationState;
   comments: commentsState;
   commentsCheck: commentsCheckState;
+  postsCheck: postsCheckState;
   addPosts: addPostsState;
 }
 
@@ -34,6 +36,7 @@ const rootReducer = combineReducers({
   pagination: paginationReducer,
   comments: commentsReducer,
   commentsCheck: commentsCheckReducer,
+  postsCheck: postsCheckReducer,
   addPosts: addPostsReducer,
 });
 

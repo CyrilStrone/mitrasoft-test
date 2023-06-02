@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { inGetUsersId } from "../logics/getUser";
 import { DetailsPageUser } from "../molecules/DetailsPageUser";
-import { setUserInfo, removeUserInfo } from "../../../redux/actions/userInfo/actions";
+import { setUserInfo } from "../../../redux/actions/userInfo/actions";
 import { RootState } from "../../../redux/store";
 import { Button } from "react-bootstrap";
 import { Loader } from "../../../ui/loader/organelles/Loader";
@@ -36,11 +36,6 @@ export const DetailsPage = () => {
       requestGetInUserId(id)
     }
   }, [id])
-  useEffect(() => {
-    return () => {
-      dispatch(removeUserInfo())
-    }
-  }, [])
   return (
     <div className="DetailsPage">
       <Button onClick={handleClick}>Назад</Button>

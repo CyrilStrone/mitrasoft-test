@@ -10,6 +10,7 @@ import { closeComments, openComments } from "../../../redux/actions/commentsChec
 
 export interface IListOfPostsBarItem {
   id: any
+  idUser?: string | null
   userId?: any
   title?: string
   body?: string
@@ -35,7 +36,7 @@ export const ListOfPostsBarItem = (params: IListOfPostsBarItem) => {
   return (
     <Card className="ListOfPostsBarItem">
       <Card className="ListOfPostsBarItem__User">
-        {params.userId && <Card.Img src={Avatar} onClick={() => navigate(`/DetailsPage/${params.userId}`)} />}
+        {params.userId && <Card.Img src={Avatar} onClick={() =>!params.idUser && navigate(`/DetailsPage/${params.userId}`)} />}
         <Card.Body>
           <Card.Title>{params?.title}</Card.Title>
           <Card.Text>

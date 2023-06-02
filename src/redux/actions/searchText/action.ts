@@ -1,6 +1,6 @@
 export enum ActionTypesSearch {
   SET_SEARCH_TEXT = "SET_SEARCH_TEXT",
-  REMOVE_SEARCH_TEXT = "REMOVE_USER_INFO",
+  REMOVE_SEARCH_TEXT = "REMOVE_SEARCH_TEXT",
 }
 
 export const setSearchText = (text: string) => ({
