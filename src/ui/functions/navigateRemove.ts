@@ -15,29 +15,32 @@ import { removeUserInfoCheck } from "../../redux/actions/userInfoCheck/actions";
 export const navigateRemove = async (
   link?: string,
   dispatch?: any,
-  navigate?: any
+  navigate?: any,
+  location?: any
 ) => {
-  const RESULT1 = await dispatch(removeAddPosts());
-  if (RESULT1) {
-    const RESULT2 = await dispatch(removeAddDefaultPosts());
-    if (RESULT2) {
-      const RESULT3 = await dispatch(removeUserInfo());
-      if (RESULT3) {
-        const RESULT4 = await dispatch(removeSearchText());
-        if (RESULT4) {
-          const RESULT5 = await dispatch(removeSortCheck());
-          if (RESULT5) {
-            dispatch(removeComments());
-            dispatch(removeUserInfoCheck());
-            dispatch(removePagination());
-            dispatch(removeSideBarOpen());
-            dispatch(removePostCommentsCheck());
-            dispatch(removePostsCheck());
-            dispatch(removeSideBarOpen());
-            link && navigate(link);
+  if (!location?.pathname || location?.pathname !== link) {
+    const RESULT1 = await dispatch(removeAddPosts());
+    if (RESULT1) {
+      const RESULT2 = await dispatch(removeAddDefaultPosts());
+      if (RESULT2) {
+        const RESULT3 = await dispatch(removeUserInfo());
+        if (RESULT3) {
+          const RESULT4 = await dispatch(removeSearchText());
+          if (RESULT4) {
+            const RESULT5 = await dispatch(removeSortCheck());
+            if (RESULT5) {
+              dispatch(removeComments());
+              dispatch(removeUserInfoCheck());
+              dispatch(removePagination());
+              dispatch(removePostCommentsCheck());
+              dispatch(removePostsCheck());
+              dispatch(removeSideBarOpen());
+              link && navigate(link);
+            }
           }
         }
       }
     }
   }
+  dispatch(removeSideBarOpen());
 };
