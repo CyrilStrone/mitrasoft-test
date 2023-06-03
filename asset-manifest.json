@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/mitrasoft-test/static/css/main.b15bfebd.css",
-    "main.js": "/mitrasoft-test/static/js/main.c7f3eaf6.js",
+    "main.js": "/mitrasoft-test/static/js/main.ce67df42.js",
     "static/js/787.04bbd5e4.chunk.js": "/mitrasoft-test/static/js/787.04bbd5e4.chunk.js",
     "static/media/Avatar.jpg": "/mitrasoft-test/static/media/Avatar.8aeeb0b15df6cc9d27fe.jpg",
     "static/media/bootstrap-icons.woff?": "/mitrasoft-test/static/media/bootstrap-icons.4753c5ba57962b4d7bf8.woff",
@@ -9,11 +9,11 @@
     "static/media/avatar.jpg": "/mitrasoft-test/static/media/avatar.c3d44b7f3e6545281b12.jpg",
     "index.html": "/mitrasoft-test/index.html",
     "main.b15bfebd.css.map": "/mitrasoft-test/static/css/main.b15bfebd.css.map",
-    "main.c7f3eaf6.js.map": "/mitrasoft-test/static/js/main.c7f3eaf6.js.map",
+    "main.ce67df42.js.map": "/mitrasoft-test/static/js/main.ce67df42.js.map",
     "787.04bbd5e4.chunk.js.map": "/mitrasoft-test/static/js/787.04bbd5e4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b15bfebd.css",
-    "static/js/main.c7f3eaf6.js"
+    "static/js/main.ce67df42.js"
   ]
 }
